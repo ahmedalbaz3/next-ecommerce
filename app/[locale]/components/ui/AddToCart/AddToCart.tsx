@@ -30,7 +30,7 @@ const AddToCart = ({
       }}
       className={`cursor-pointer text-base md:text-lg font-medium px-4 py-2 rounded-full border transition-all duration-300 whitespace-nowrap
         bg-white border-zinc-400 text-black hover:bg-sky-500 hover:text-white hover:border-sky-500
-        dark:bg-zinc-900 dark:border-zinc-700 dark:text-white dark:hover:bg-sky-600 dark:hover:border-sky-600
+        dark:bg-zinc-900 dark:border-zinc-700 dark:text-white dark:hover:bg-sky-600 dark:hover:border-sky-600 text-center
         ${style}`}
       dir={dir}
     >
