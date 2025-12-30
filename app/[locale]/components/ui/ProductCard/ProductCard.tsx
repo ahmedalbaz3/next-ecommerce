@@ -54,7 +54,12 @@ const ProductCard = ({
               {isRtl ? name_ar : name_en}
             </h3>
 
-            <AddToCart id={id} price={price} dir={isRtl ? "rtl" : "ltr"} />
+            <AddToCart
+              inStock={inStock}
+              id={id}
+              price={price}
+              dir={isRtl ? "rtl" : "ltr"}
+            />
           </div>
         </div>
 

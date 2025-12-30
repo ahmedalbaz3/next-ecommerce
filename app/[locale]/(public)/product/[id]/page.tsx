@@ -139,6 +139,7 @@ export default async function ProductPage({
 
               <div className="space-y-4 pt-4">
                 <AddToCart
+                  inStock={inStock}
                   id={id}
                   price={price}
                   style="w-full bg-black text-white dark:bg-white dark:text-black py-5 rounded-2xl font-bold transition-all active:scale-95"
