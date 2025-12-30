@@ -22,7 +22,6 @@ export default function LoginPage() {
     (state) => state.authReducer.isAuthenticated
   );
 
-  // Schema inside component to use the 't' hook for errors
   const logInSchema = z.object({
     mail: z
 

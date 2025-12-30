@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
 export default async function AboutPage() {
-  // Ensure "About" matches the key in your messages/en.json
   const t = await getTranslations("about");
 
   return (
@@ -45,7 +44,6 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Values Grid - Dynamically mapped from JSON keys */}
       <section className="bg-black text-white rounded-[2rem] p-12 md:p-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {["ethical", "shipping", "warranty"].map((key, i) => (

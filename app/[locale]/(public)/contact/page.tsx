@@ -10,7 +10,6 @@ export default function ContactPage() {
   const isRtl = useAppSelector((state) => state.dirReducer.isRtl);
   const t = useTranslations("Contact");
 
-  // Schema defined inside to use the 't' function for dynamic errors
   const contactSchema = z.object({
     name: z.string().min(2, { message: t("validation.nameMin") }),
     email: z.email({ message: t("validation.emailInvalid") }),

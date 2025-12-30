@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 export default function AccountPage() {
   const t = useTranslations("Account");
   const [activeTab, setActiveTab] = useState("profile");
-  const [mounted, setMounted] = useState(false); // Hydration Guard
+  const [mounted, setMounted] = useState(false);
 
   const isRtl = useAppSelector((state) => state.dirReducer.isRtl);
   const { isAuthenticated, user } = useAppSelector(
@@ -19,7 +19,6 @@ export default function AccountPage() {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
-  // 1. Handle Mounting & Authentication Guard
   useEffect(() => {
     setMounted(true);
     if (mounted && !isAuthenticated) {
@@ -31,13 +30,11 @@ export default function AccountPage() {
     dispatch(logout());
   };
 
-  // 2. Prevent Hydration Mismatch: Render nothing until mounted
   if (!mounted) return null;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12" dir={isRtl ? "rtl" : "ltr"}>
       <div className="flex flex-col md:flex-row gap-12">
-        {/* Sidebar */}
         <aside className="w-full md:w-64 space-y-2">
           <div className="mb-8 px-4">
             <h1 className="text-2xl font-bold tracking-tight">
@@ -69,7 +66,6 @@ export default function AccountPage() {
           </nav>
         </aside>
 
-        {/* Content Area */}
         <main className="flex-1 bg-white border border-gray-100 rounded-3xl p-6 md:p-10 shadow-sm">
           {activeTab === "profile" ? (
             <ProfileTab t={t} user={user} />

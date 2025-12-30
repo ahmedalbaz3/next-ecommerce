@@ -41,7 +41,6 @@ export default function CheckoutPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
         <div className="lg:col-span-2 space-y-12">
-          {/* Contact Info */}
           <section>
             <h2 className="text-xl font-semibold mb-6">
               {t("contactInfo.title")}
@@ -53,7 +52,6 @@ export default function CheckoutPage() {
             />
           </section>
 
-          {/* Shipping Address */}
           <section>
             <h2 className="text-xl font-semibold mb-6">
               {t("shippingAddress.title")}
@@ -119,7 +117,6 @@ export default function CheckoutPage() {
           </button>
         </div>
 
-        {/* Sidebar Summary */}
         <div className="lg:col-span-1">
           <div className="bg-gray-50 p-8 rounded-2xl sticky top-24 border border-gray-100">
             <h2 className="text-lg font-bold mb-6">{t("summary.title")}</h2>
