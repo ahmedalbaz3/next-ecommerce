@@ -98,7 +98,6 @@ export default async function ProductPage({
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-24">
-            {/* Image Gallery Container */}
             <div className="space-y-4">
               <div className="relative aspect-[3/4] overflow-hidden rounded-3xl bg-gray-50 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800">
                 <Image
@@ -112,7 +111,6 @@ export default async function ProductPage({
               </div>
             </div>
 
-            {/* Product Details Sidebar */}
             <div className="lg:sticky lg:top-24 h-fit space-y-8">
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-black dark:text-white">
@@ -142,7 +140,7 @@ export default async function ProductPage({
                   inStock={inStock}
                   id={id}
                   price={price}
-                  style="w-full bg-black text-white dark:bg-white dark:text-black py-5 rounded-2xl font-bold transition-all active:scale-95"
+                  style="w-full bg-black text-black dark:bg-white dark:text-black py-5 rounded-2xl font-bold transition-all active:scale-95"
                   dir={isRtl ? "rtl" : "ltr"}
                 />
               </div>

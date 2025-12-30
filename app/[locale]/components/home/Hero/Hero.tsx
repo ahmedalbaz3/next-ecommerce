@@ -39,7 +39,7 @@ const Hero = () => {
                 bg="bg-black text-white dark:bg-white dark:text-black w-full transition-all active:scale-95"
               />
             </Link>
-            <Link href="/collections" className="w-full md:w-auto">
+            <Link href="/product" className="w-full md:w-auto">
               <Button
                 text={tHero("sec")}
                 bg="bg-white text-black border border-gray-200 dark:bg-transparent dark:text-white dark:border-zinc-800 w-full transition-all active:scale-95"
