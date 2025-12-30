@@ -1,0 +1,46 @@
+{
+  "categories": [
+    {
+      "id": "c1",
+      "slug": "apparel",
+      "name_en": "Apparel",
+      "name_ar": "ملابس",
+      "image": "/images/headphone.svg"
+    },
+    {
+      "id": "c2",
+      "slug": "electronics",
+      "name_en": "Electronics",
+      "name_ar": "إلكترونيات",
+      "image": "/images/camera.svg"
+    },
+    {
+      "id": "c3",
+      "slug": "home",
+      "name_en": "Home",
+      "name_ar": "المنزل",
+      "image": "/images/headphone.svg"
+    },
+    {
+      "id": "c4",
+      "slug": "beauty",
+      "name_en": "Beauty",
+      "name_ar": "الجمال",
+      "image": "/images/headphone.svg"
+    },
+    {
+      "id": "c5",
+      "slug": "sports",
+      "name_en": "Sports",
+      "name_ar": "رياضة",
+      "image": "/images/headphone.svg"
+    },
+    {
+      "id": "c6",
+      "slug": "accessories",
+      "name_en": "Accessories",
+      "name_ar": "إكسسوارات",
+      "image": "/images/headphone.svg"
+    }
+  ]
+}

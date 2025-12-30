@@ -17,10 +17,10 @@ const setToCookie = (newDir: "ltr" | "rtl") => {
     document.cookie =
       "direction=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     document.cookie =
-      "NEXT_LOCALE=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      "task_locale=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
 
     document.cookie = `direction=${newDir}; path=/; max-age=31536000; SameSite=Lax`;
-    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    document.cookie = `task_locale=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
 
     document.documentElement.dir = newDir;
   }

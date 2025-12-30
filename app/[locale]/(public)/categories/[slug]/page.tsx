@@ -1,6 +1,5 @@
 "use client";
 
-import { fetchCategoryBySlug } from "@/api/api";
 import ProductCard from "@/app/[locale]/components/ui/ProductCard/ProductCard";
 import { useAppSelector } from "@/store/actions";
 import { TProduct } from "@/types/TProduct";
@@ -11,16 +10,6 @@ const page = () => {
   const { slug } = useParams();
   const [data, setData] = useState<TProduct[]>([]);
   const isRtl = useAppSelector((state) => state.dirReducer.isRtl);
-
-  useEffect(() => {
-    const getCategories = async () => {
-      const data = await fetchCategoryBySlug(slug as string);
-
-      setData(data.products);
-    };
-
-    getCategories();
-  }, []);
 
   if (!data.length)
     return (

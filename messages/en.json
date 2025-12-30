@@ -1,0 +1,193 @@
+{
+  "common": {
+    "home": "Home",
+    "products": "Products",
+    "contact": "Contact Us",
+    "ourProducts": "Our Products"
+  },
+  "product": {
+    "inStock": "In stock",
+    "outOfStock": "Out of stock"
+  },
+  "header": {
+    "logo": " E-Commerce",
+    "logout": "Logout",
+    "login": "Login",
+    "contact": "Contact",
+    "about": "About",
+    "products": "Products",
+    "aria": {
+      "openMenu": "navigation menu",
+      "viewCart": "view cart"
+    }
+  },
+  "hero": {
+    "title": "Timeless Elegance, Woven in Tradition",
+    "phrase": "Redefining the essence of modern living through curated collections and timeless design. We blend artisanal craftsmanship with contemporary aesthetics to bring you pieces that speak to your individuality and elevate your everyday experience.",
+    "prim": "Shop Now",
+    "sec": "Browse Collections"
+  },
+  "ourCategories": {
+    "title": "Our Categories"
+  },
+  "productCard": {
+    "title": "Our Products",
+    "price": "Price",
+    "button": "add to cart"
+  },
+  "about": {
+    "title": "We redefine  modern living.",
+    "description": "Founded in 2025, we believe that everyday objects should be a blend of exceptional craftsmanship and functional beauty.",
+    "philosophy": {
+      "title": "Our Philosophy",
+      "description": "We don't just sell products; we curate experiences. Every item in our collection is vetted for sustainability, durability, and aesthetic timelessness.",
+      "stats": {
+        "customers": "Customers",
+        "organic": "Organic"
+      }
+    },
+    "values": {
+      "ethical": {
+        "title": "Ethical Sourcing",
+        "desc": "We ensure every step of our supply chain respects both the environment and the workers."
+      },
+      "shipping": {
+        "title": "Global Shipping",
+        "desc": "We ensure every step of our supply chain respects both the environment and the workers."
+      },
+      "warranty": {
+        "title": "Lifetime Warranty",
+        "desc": "We ensure every step of our supply chain respects both the environment and the workers."
+      }
+    }
+  },
+  "Contact": {
+    "title": "Get in touch.",
+    "description": "Have a question about an order or just want to say hi? We'd love to hear from you.",
+    "emailUs": "Email us",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "Your email",
+      "message": "Message",
+      "messagePlaceholder": "How can we help?",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Your message has been sent!"
+    },
+    "validation": {
+      "nameMin": "Name must be at least 2 characters",
+      "emailInvalid": "Invalid email address",
+      "messageMin": "Message must be at least 10 characters"
+    }
+  },
+  "productPage": {
+    "back": "Back to Collection",
+    "review": "reviews",
+    "shipping": "Complimentary Shipping",
+    "shippingDetails": "On all orders over",
+    "rules": "Year Warranty",
+    "rulesDetails": "Quality guaranteed or full refund"
+  },
+  "cart": {
+    "empty": "Your cart is empty",
+    "title": "Shopping Cart",
+    "details": {
+      "summary": "Order Summary",
+      "subtotal": "Subtotal",
+      "shipping": "Estimated Shipping",
+      "total": "Total",
+      "checkout": "Checkout",
+      "taxes": "Taxes calculated at checkout"
+    }
+  },
+  "Checkout": {
+    "backToCart": "Back to Cart",
+    "title": "Checkout",
+    "contactInfo": {
+      "title": "Contact Information",
+      "email": "Email Address"
+    },
+    "shippingAddress": {
+      "title": "Shipping Address",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "address": "Address",
+      "city": "City",
+      "postalCode": "Postal Code"
+    },
+    "payment": {
+      "title": "Payment Details",
+      "creditCard": "Credit Card",
+      "cardNumber": "Card Number",
+      "expiry": "MM / YY",
+      "cvc": "CVC",
+      "payNow": "Pay Now"
+    },
+    "summary": {
+      "title": "Order Summary",
+      "size": "Size: {size}",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "total": "Total",
+      "terms": "By clicking \"Pay Now\", you agree to our Terms of Service and Privacy Policy."
+    }
+  },
+  "Account": {
+    "sidebar": {
+      "title": "My Account",
+      "welcome": "Welcome back, {name}",
+      "logout": "Log Out"
+    },
+    "profile": {
+      "title": "Personal Information",
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "save": "Save Changes"
+    },
+    "orders": {
+      "title": "Order History",
+      "orderNumber": "Order #{number}",
+      "date": "Placed on {date}",
+      "status": "Delivered"
+    }
+  },
+  "Login": {
+    "title": "Welcome back",
+    "subtitle": "Enter your details to access your account",
+    "mail": "Mail",
+    "mailPlaceholder": "Email Address",
+    "password": "Password",
+    "passwordPlaceholder": "Password",
+    "forgotPassword": "Forgot password?",
+    "submit": "Sign In",
+    "noAccount": "Don't have an account?",
+    "createOne": "Create one",
+    "validation": {
+      "mailFormat": "Invalid email format",
+      "mailSecurity": "Email does not meet security requirements",
+      "passMin": "Password must be at least 8 characters",
+      "passUpper": "Must contain an uppercase letter",
+      "passNumber": "Must contain a number"
+    }
+  },
+  "Signup": {
+    "title": "Join us",
+    "subtitle": "Start your premium shopping journey today",
+    "name": "Full Name",
+    "mail": "Email Address",
+    "password": "Create Password",
+    "terms": "I agree to the ",
+    "termsLink": "Terms of Service",
+    "privacyLink": "Privacy Policy",
+    "submit": "Create Account",
+    "hasAccount": "Already have an account?",
+    "login": "Log in",
+    "and": "and",
+    "validation": {
+      "name": "Please use your real name (min 7 characters)",
+      "terms": "You must accept the terms and conditions"
+    }
+  }
+}

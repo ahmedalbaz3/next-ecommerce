@@ -9,23 +9,30 @@ import { setCredentials } from "@/store/slices/authSlice";
 import { useAppDispatch, useAppSelector } from "@/store/actions";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-
-const signUp = z.object({
-  name: z.string().min(7, "Use a real name"),
-  mail: z.email({ pattern: EMAIL_REGEX }),
-  password: z
-    .string()
-    .min(8, "Password must be at least 8 characters")
-    .regex(/[A-Z]/, "Must contain an uppercase letter")
-    .regex(/[0-9]/, "Must contain a number"),
-  acceptTerms: z
-    .boolean()
-    .refine((val) => val === true, "You must accept the terms"),
-});
-
-type signUpT = z.infer<typeof signUp>;
+import { useTranslations } from "next-intl";
 
 export default function SignupPage() {
+  const tSignup = useTranslations("Signup");
+  const tLogin = useTranslations("Login");
+
+  const signUp = z.object({
+    name: z.string().min(7, tSignup("validation.name")),
+    mail: z
+      .email(tLogin("validation.mailFormat"))
+      .regex(EMAIL_REGEX, tLogin("validation.mailSecurity")),
+
+    password: z
+      .string()
+      .min(8, tLogin("validation.passMin"))
+      .regex(/[A-Z]/, tLogin("validation.passUpper"))
+      .regex(/[0-9]/, tLogin("validation.passNumber")),
+    acceptTerms: z
+      .boolean()
+      .refine((val) => val === true, tSignup("validation.terms")),
+  });
+
+  type signUpT = z.infer<typeof signUp>;
+
   const isAuthenticated = useAppSelector(
     (state) => state.authReducer.isAuthenticated
   );
@@ -51,7 +58,7 @@ export default function SignupPage() {
 
   const onSubmit = async (data: signUpT) => {
     try {
-      const response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -61,12 +68,15 @@ export default function SignupPage() {
         }),
       });
 
-      if (!response.ok) throw new Error("Registration failed");
+      const result = await response.json();
 
-      const result = await response.json(); // { user, token }
+      if (!response.ok) {
+        throw new Error(result.error || "Registration failed");
+      }
 
       dispatch(setCredentials(result));
       reset();
+      console.log("Signup successful:", result.message);
     } catch (error: any) {
       alert(error.message);
     }
@@ -76,41 +86,41 @@ export default function SignupPage() {
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight">Join us</h1>
-          <p className="text-gray-500 mt-2">
-            Start your premium shopping journey today
-          </p>
+          <h1 className="text-4xl font-bold tracking-tight">
+            {tSignup("title")}
+          </h1>
+          <p className="text-gray-500 mt-2">{tSignup("subtitle")}</p>
         </div>
 
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="relative">
-            username
+            {tSignup("name")}
             <input
               {...register("name")}
               type="text"
-              placeholder="Full Name"
+              placeholder={tSignup("name")}
               className="w-full pl-12 pr-4 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all"
             />
             {errors.name && <p className="warning">{errors.name.message}</p>}
           </div>
 
           <div className="relative">
-            Email
+            {tSignup("mail")}
             <input
               {...register("mail")}
               type="email"
-              placeholder="Email Address"
+              placeholder={tSignup("mail")}
               className="w-full pl-12 pr-4 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all"
             />
             {errors.mail && <p className="warning">{errors.mail.message}</p>}
           </div>
 
           <div className="relative">
-            Password
+            {tSignup("password")}
             <input
               {...register("password")}
               type="password"
-              placeholder="Create Password"
+              placeholder={tSignup("password")}
               className="w-full pl-12 pr-4 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all"
             />
             {errors.password && (
@@ -131,9 +141,10 @@ export default function SignupPage() {
                 htmlFor="terms"
                 className="text-xs text-gray-500 leading-tight"
               >
-                I agree to the{" "}
-                <span className="underline">Terms of Service</span> and{" "}
-                <span className="underline">Privacy Policy</span>.
+                {tSignup("terms")}
+                <span className="underline">{tSignup("termsLink")}</span>{" "}
+                {tSignup("and")}{" "}
+                <span className="underline">{tSignup("privacyLink")}</span>.
               </label>
             </div>
             {errors.acceptTerms && (
@@ -142,17 +153,17 @@ export default function SignupPage() {
           </div>
 
           <button className="w-full bg-black text-white py-4 rounded-2xl font-bold hover:bg-gray-800 transition-all">
-            Create Account
+            {tSignup("submit")}
           </button>
         </form>
 
         <p className="text-center text-gray-500">
-          Already have an account?{" "}
+          {tSignup("hasAccount")}
           <Link
             href="/auth/login"
             className="text-black font-bold hover:underline"
           >
-            Log in
+            {tSignup("login")}
           </Link>
         </p>
       </div>

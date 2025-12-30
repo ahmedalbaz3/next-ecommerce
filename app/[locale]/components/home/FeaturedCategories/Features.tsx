@@ -1,7 +1,7 @@
 "use client";
-import { fetchCategories } from "@/api/api";
 import CategoryCard from "@/app/[locale]/components/ui/CategoryCard/CategoryCard";
 import { useAppSelector } from "@/store/actions";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 interface categoriesType {
@@ -14,28 +14,41 @@ interface categoriesType {
 
 const FeaturedCategories = () => {
   const [categories, setCategories] = useState<categoriesType[]>([]);
-  const [loading, setLoading] = useState(true);
   const isRtl = useAppSelector((state) => state.dirReducer.isRtl);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const tCategories = useTranslations("ourCategories");
 
   useEffect(() => {
-    const loadData = async () => {
+    const fetchCategories = async () => {
       try {
-        const data = await fetchCategories();
-        setCategories(data);
-      } catch (error) {
-        console.error("Failed to fetch:", error);
+        setIsLoading(true);
+        const res = await fetch("/api/categories");
+
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        setCategories(data.categories);
+      } catch (err) {
+        console.error("Fetch error:", err);
+        setError("Failed to load categories.");
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
-    loadData();
+    fetchCategories();
   }, []);
+
+  useEffect(() => {}, []);
   return (
     <section className="max-md:px-4">
       <div className="container py-24 mx-auto relative">
         <h2 className="text-4xl font-semibold text-center mb-12">
-          {isRtl ? "التصنيفات" : "Our Categories"}
+          {tCategories("title")}
         </h2>
         <div className=" overflow-x-auto">
           <div className="flex flex-row gap-10 min-w-fit ">

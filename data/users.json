@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "email": "user@example.com",
+      "name": "Ahmed Albaz",
+      "role": "user",
+      "password": "Password123"
+    },
+    {
+      "id": "u2",
+      "email": "admin@example.com",
+      "name": "Admin User",
+      "role": "admin",
+      "password": "password123"
+    },
+    {
+      "id": "u3",
+      "email": "sara.j@example.com",
+      "name": "Sara Johnson",
+      "role": "user",
+      "password": "password123"
+    },
+    {
+      "id": "u4",
+      "email": "mod@example.com",
+      "name": "Moderator One",
+      "role": "moderator",
+      "password": "password123"
+    },
+    {
+      "id": "u5",
+      "email": "omar.h@example.com",
+      "name": "Omar Hassan",
+      "role": "user",
+      "password": "password123"
+    }
+  ]
+}

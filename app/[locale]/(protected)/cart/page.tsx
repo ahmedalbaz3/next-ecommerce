@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/store/actions";
 import {
@@ -8,19 +7,33 @@ import {
   deleteItem,
   loadCartProducts,
 } from "@/store/slices/cartSlice";
+import { useEffect } from "react";
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 export default function CartPage() {
+  const tCart = useTranslations("cart");
+
   const shipping = 10.0;
-  const dispatch = useAppDispatch();
   const { items, fullProductInfo, totalPrice } = useAppSelector(
     (state) => state.cartReducer
   );
   const isRtl = useAppSelector((state) => state.dirReducer.isRtl);
+  const isAuth = useAppSelector((state) => state.authReducer.isAuthenticated);
+
+  const router = useRouter();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(loadCartProducts(items));
-  }, [dispatch]);
+    console.log(items);
+    if (Object.keys(items).length > 0) {
+      dispatch(loadCartProducts(items));
+    }
 
+    if (!isAuth) {
+      router.push("/");
+    }
+  }, [isAuth, router, dispatch]);
   // ========= handle delete item ========
 
   const handleDeleteItem = (id: string) => {
@@ -44,7 +57,7 @@ export default function CartPage() {
   if (!Object.keys(items).length) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-4">
-        <h2 className="text-2xl font-semibold">Your cart is empty</h2>
+        <h2 className="text-2xl font-semibold">{tCart("empty")}</h2>
         <Link
           href="/"
           className="text-blue-600 hover:underline flex items-center gap-2"
@@ -55,9 +68,7 @@ export default function CartPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold mb-8">
-        {isRtl ? "عربه التسوق" : "Shopping Cart"}
-      </h1>
+      <h1 className="text-3xl font-bold mb-8">{tCart("title")}</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2 space-y-6">
@@ -130,29 +141,29 @@ export default function CartPage() {
 
         <div className="bg-gray-50 p-8 rounded-xl h-fit sticky top-24">
           <h2 className="text-xl font-semibold mb-6">
-            {isRtl ? "ملخص الطلب" : "Order Summary"}
+            {tCart("details.summary")}
           </h2>
           <div className="space-y-4 text-sm">
             <div className="flex justify-between text-gray-600">
-              <span>{isRtl ? "المجموع الفرعي" : "Subtotal"}</span>
+              <span>{tCart("details.subtotal")}</span>
               <span>${totalPrice.toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-gray-600">
-              <span>{isRtl ? "الشحن المتوقع" : "Estimated Shipping"}</span>
+              <span>{tCart("details.shipping")}</span>
               <span>${shipping.toFixed(2)}</span>
             </div>
             <div className="border-t pt-4 flex justify-between text-lg font-bold">
-              <span>{isRtl ? "الكل" : "Total"}</span>
+              <span>{tCart("details.total")}</span>
               <span>${(totalPrice + 10).toFixed(2)}</span>
             </div>
           </div>
           <Link href="/checkout">
             <button className="w-full cursor-pointer bg-black text-white mt-8 py-4 rounded-full font-medium hover:bg-gray-800 transition-colors">
-              {isRtl ? "دفع" : "Checkout"}
+              {tCart("details.checkout")}
             </button>
           </Link>
           <p className="text-center text-xs text-gray-500 mt-4">
-            {isRtl ? "الضرايب تحسب عند الدفع" : "Taxes calculated at checkout"}
+            {tCart("details.taxes")}
           </p>
         </div>
       </div>

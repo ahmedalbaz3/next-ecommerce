@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TProduct } from "@/types/TProduct";
 import AddToCart from "../AddToCart/AddToCart";
+import { useTranslations } from "next-intl";
 
 interface productCardProps extends TProduct {
   isRtl: boolean;
@@ -18,6 +19,8 @@ const ProductCard = ({
   description_ar,
   description_en,
 }: productCardProps) => {
+  const tProductCard = useTranslations("productCard");
+
   return (
     <div className="w-full h-120 rounded-2xl border border-gray-300 p-4 flex flex-col items-center mx-auto">
       <Link
@@ -26,8 +29,8 @@ const ProductCard = ({
       >
         <Image
           className="w-full"
-          src="/products/shoe.jpg"
-          alt=""
+          src={image}
+          alt={isRtl ? name_ar : name_en}
           width={200}
           height={200}
           loading="eager"
@@ -40,7 +43,7 @@ const ProductCard = ({
         </div>
         <div className="bottom flex gap-1.5 mt-4 items-center text-xl ">
           <span className=" text-sky-400 font-semibold text-2xl">
-            {isRtl ? "السعر:" : "price:"}
+            {tProductCard("price")}
           </span>
           <div className="value">${price}</div>
         </div>

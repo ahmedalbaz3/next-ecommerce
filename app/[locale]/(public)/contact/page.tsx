@@ -4,24 +4,17 @@ import { useAppSelector } from "@/store/actions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useTranslations } from "next-intl";
 
 export default function ContactPage() {
   const isRtl = useAppSelector((state) => state.dirReducer.isRtl);
+  const t = useTranslations("Contact");
 
+  // Schema defined inside to use the 't' function for dynamic errors
   const contactSchema = z.object({
-    name: z.string().min(2, {
-      message: isRtl
-        ? "الاسم يجب أن يكون حرفين على الأقل"
-        : "Name must be at least 2 characters",
-    }),
-    email: z.email({
-      message: isRtl ? "البريد الإلكتروني غير صحيح" : "Invalid email address",
-    }),
-    message: z.string().min(10, {
-      message: isRtl
-        ? "الرسالة يجب أن تكون ١٠ أحرف على الأقل"
-        : "Message must be at least 10 characters",
-    }),
+    name: z.string().min(2, { message: t("validation.nameMin") }),
+    email: z.email({ message: t("validation.emailInvalid") }),
+    message: z.string().min(10, { message: t("validation.messageMin") }),
   });
 
   const {
@@ -36,29 +29,17 @@ export default function ContactPage() {
 
   const onSubmit = async (data: any) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Form Data:", data);
-    alert(isRtl ? "تم إرسال رسالتك بنجاح!" : "Your message has been sent!");
+    alert(t("form.success"));
     reset();
   };
 
   return (
-    <div
-      className={`max-w-6xl mx-auto px-4 py-16 ${
-        isRtl ? "text-right" : "text-left"
-      }`}
-      dir={isRtl ? "rtl" : "ltr"}
-    >
+    <div className="max-w-6xl mx-auto px-4 py-16" dir={isRtl ? "rtl" : "ltr"}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
         <div className="space-y-12">
           <div className="space-y-4">
-            <h1 className="text-5xl font-bold">
-              {isRtl ? "تواصل معنا." : "Get in touch."}
-            </h1>
-            <p className="text-gray-500 text-lg">
-              {isRtl
-                ? "لديك سؤال عن طلب أو تريد فقط التحية؟ يسعدنا التواصل معك."
-                : "Have a question about an order or just want to say hi? We'd love to hear from you."}
-            </p>
+            <h1 className="text-5xl font-bold">{t("title")}</h1>
+            <p className="text-gray-500 text-lg">{t("description")}</p>
           </div>
 
           <div className="space-y-6">
@@ -68,7 +49,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="text-xs text-gray-400 uppercase font-bold tracking-wider">
-                  {isRtl ? "راسلنا" : "Email us"}
+                  {t("emailUs")}
                 </p>
                 <p className="font-medium text-lg">hello@yourbrand.com</p>
               </div>
@@ -80,17 +61,13 @@ export default function ContactPage() {
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-sm font-medium">
-                  {isRtl ? "الاسم" : "Name"}
-                </label>
+                <label className="text-sm font-medium">{t("form.name")}</label>
                 <input
                   {...register("name")}
+                  placeholder={t("form.namePlaceholder")}
                   className={`w-full p-4 bg-gray-50 border rounded-xl focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all ${
-                    errors.name
-                      ? "border-red-500 focus:ring-red-200"
-                      : "border-transparent"
+                    errors.name ? "border-red-500" : "border-transparent"
                   }`}
-                  placeholder={isRtl ? "اسمك الكامل" : "Your full name"}
                 />
                 {errors.name && (
                   <p className="text-red-500 text-xs">{errors.name.message}</p>
@@ -98,17 +75,13 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">
-                  {isRtl ? "البريد" : "Email"}
-                </label>
+                <label className="text-sm font-medium">{t("form.email")}</label>
                 <input
                   {...register("email")}
+                  placeholder={t("form.emailPlaceholder")}
                   className={`w-full p-4 bg-gray-50 border rounded-xl focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all ${
-                    errors.email
-                      ? "border-red-500 focus:ring-red-200"
-                      : "border-transparent"
+                    errors.email ? "border-red-500" : "border-transparent"
                   }`}
-                  placeholder={isRtl ? "بريدك الإلكتروني" : "Your email"}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-xs">{errors.email.message}</p>
@@ -117,18 +90,14 @@ export default function ContactPage() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">
-                {isRtl ? "الرسالة" : "Message"}
-              </label>
+              <label className="text-sm font-medium">{t("form.message")}</label>
               <textarea
                 rows={5}
                 {...register("message")}
+                placeholder={t("form.messagePlaceholder")}
                 className={`w-full p-4 bg-gray-50 border rounded-xl focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all ${
-                  errors.message
-                    ? "border-red-500 focus:ring-red-200"
-                    : "border-transparent"
+                  errors.message ? "border-red-500" : "border-transparent"
                 }`}
-                placeholder={isRtl ? "كيف يمكننا مساعدتك؟" : "How can we help?"}
               ></textarea>
               {errors.message && (
                 <p className="text-red-500 text-xs">{errors.message.message}</p>
@@ -139,7 +108,7 @@ export default function ContactPage() {
               disabled={isSubmitting}
               className="w-full bg-black text-white py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-gray-800 transition-all disabled:bg-gray-400"
             >
-              {isSubmitting ? "..." : isRtl ? "إرسال الرسالة" : "Send Message"}
+              {isSubmitting ? t("form.sending") : t("form.submit")}
             </button>
           </form>
         </div>

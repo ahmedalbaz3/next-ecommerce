@@ -1,35 +1,17 @@
-// app/[locale]/about/page.tsx
+import { getTranslations } from "next-intl/server";
 
-export default async function AboutPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-
-  const isAr = locale === "ar";
+export default async function AboutPage() {
+  // Ensure "About" matches the key in your messages/en.json
+  const t = await getTranslations("about");
 
   return (
-    <div
-      className="max-w-6xl mx-auto px-4 py-16 space-y-24"
-      dir={isAr ? "rtl" : "ltr"}
-    >
+    <div className="max-w-6xl mx-auto px-4 py-16 space-y-24">
       <section className="text-center space-y-6">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-          {isAr ? (
-            <>
-              نعيد تعريف <br /> الحياة العصرية
-            </>
-          ) : (
-            <>
-              We redefine <br /> modern living.
-            </>
-          )}
+          {t("title")}
         </h1>
         <p className="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
-          {isAr
-            ? "تأسسنا في عام 2025، ونؤمن بأن الأشياء اليومية يجب أن تكون مزيجاً من الحرفية الاستثنائية والجمال الوظيفي."
-            : "Founded in 2025, we believe that everyday objects should be a blend of exceptional craftsmanship and functional beauty."}
+          {t("description")}
         </p>
       </section>
 
@@ -42,48 +24,36 @@ export default async function AboutPage({
           />
         </div>
         <div className="space-y-6">
-          <h2 className="text-3xl font-bold">
-            {isAr ? "فلسفتنا" : "Our Philosophy"}
-          </h2>
+          <h2 className="text-3xl font-bold">{t("philosophy.title")}</h2>
           <p className="text-gray-600 leading-relaxed">
-            {isAr
-              ? "نحن لا نبيع المنتجات فحسب؛ بل ننظم التجارب. يتم فحص كل عنصر في مجموعتنا من أجل الاستدامة والمتانة والجمال الخالد."
-              : "We don't just sell products; we curate experiences. Every item in our collection is vetted for sustainability, durability, and aesthetic timelessness."}
+            {t("philosophy.description")}
           </p>
           <div className="grid grid-cols-2 gap-8 pt-6">
             <div>
               <p className="text-3xl font-bold">12k+</p>
               <p className="text-sm text-gray-400 uppercase tracking-widest mt-1">
-                {isAr ? "عميل" : "Customers"}
+                {t("philosophy.stats.customers")}
               </p>
             </div>
             <div>
               <p className="text-3xl font-bold">100%</p>
               <p className="text-sm text-gray-400 uppercase tracking-widest mt-1">
-                {isAr ? "عضوي" : "Organic"}
+                {t("philosophy.stats.organic")}
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values Grid */}
+      {/* Values Grid - Dynamically mapped from JSON keys */}
       <section className="bg-black text-white rounded-[2rem] p-12 md:p-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {[
-            { en: "Ethical Sourcing", ar: "مصادر أخلاقية" },
-            { en: "Global Shipping", ar: "شحن عالمي" },
-            { en: "Lifetime Warranty", ar: "ضمان مدى الحياة" },
-          ].map((value, i) => (
-            <div key={i} className="space-y-4">
+          {["ethical", "shipping", "warranty"].map((key, i) => (
+            <div key={key} className="space-y-4">
               <span className="text-gray-500 font-mono">0{i + 1}</span>
-              <h3 className="text-xl font-bold">
-                {isAr ? value.ar : value.en}
-              </h3>
+              <h3 className="text-xl font-bold">{t(`values.${key}.title`)}</h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                {isAr
-                  ? "نحن نضمن أن كل خطوة في سلسلة التوريد لدينا تحترم البيئة والعمال."
-                  : "We ensure every step of our supply chain respects both the environment and the workers."}
+                {t(`values.${key}.desc`)}
               </p>
             </div>
           ))}

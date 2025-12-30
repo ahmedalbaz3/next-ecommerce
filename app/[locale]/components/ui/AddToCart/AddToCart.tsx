@@ -2,6 +2,7 @@
 import React from "react";
 import { useAppDispatch } from "@/store/actions";
 import { addToCart } from "@/store/slices/cartSlice";
+import { useTranslations } from "next-intl";
 const AddToCart = ({
   id,
   price,
@@ -14,6 +15,7 @@ const AddToCart = ({
   dir: "rtl" | "ltr";
 }) => {
   const dispatch = useAppDispatch();
+  const tCardButton = useTranslations("productCard");
 
   const handelAddToCart = ({ id, price }: { id: string; price: number }) => {
     dispatch(addToCart({ id, price }));
@@ -23,7 +25,7 @@ const AddToCart = ({
       onClick={() => handelAddToCart({ id, price })}
       className={`cursor-pointer text-xl hover:bg-sky-500 text-center hover:text-white duration-200 hover:border-white p-2 rounded-3xl border border-gray-500 whitespace-nowrap ${style}`}
     >
-      {dir === "ltr" ? "add to cart" : "اضف للعربه"}
+      {tCardButton("button")}
     </div>
   );
 };
