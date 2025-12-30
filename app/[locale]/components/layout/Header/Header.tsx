@@ -52,7 +52,7 @@ const Header = () => {
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <button
             onClick={() => setIsOpen(true)}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
             aria-label={t("aria.openMenu")}
           >
             <Menu size={26} strokeWidth={1.5} />
@@ -68,7 +68,7 @@ const Header = () => {
           <div className="flex items-center gap-2 sm:gap-4">
             <button
               onClick={togglePageDirection}
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
             >
               <Globe size={22} strokeWidth={1.5} />
             </button>
@@ -104,7 +104,7 @@ const Header = () => {
             ) : (
               <Link
                 href="/auth/login"
-                className="text-sm font-bold px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-all"
+                className="text-sm font-bold px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-all cursor-pointer"
               >
                 {t("login")}
               </Link>
@@ -142,7 +142,7 @@ const Header = () => {
             </span>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-2 hover:bg-gray-100 rounded-full"
+              className="p-2 hover:bg-gray-100 rounded-full cursor-pointer"
             >
               <X size={24} />
             </button>
@@ -169,7 +169,7 @@ const Header = () => {
                   dispatch(logout());
                   setIsOpen(false);
                 }}
-                className="flex items-center gap-2 text-red-500 font-bold"
+                className="flex items-center gap-2 text-red-500 font-bold cursor-pointer"
               >
                 <LogOut size={20} /> {t("logout")}
               </button>

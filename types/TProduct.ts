@@ -11,4 +11,5 @@ export interface TProduct {
   sizes?: Size[];
   description_en: string;
   description_ar: string;
+  categoryId?: string;
 }
