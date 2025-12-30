@@ -3,6 +3,7 @@ import React from "react";
 import { useAppDispatch } from "@/store/actions";
 import { addToCart } from "@/store/slices/cartSlice";
 import { useTranslations } from "next-intl";
+
 const AddToCart = ({
   id,
   price,
@@ -20,10 +21,18 @@ const AddToCart = ({
   const handelAddToCart = ({ id, price }: { id: string; price: number }) => {
     dispatch(addToCart({ id, price }));
   };
+
   return (
     <div
-      onClick={() => handelAddToCart({ id, price })}
-      className={`cursor-pointer text-xl hover:bg-sky-500 text-center hover:text-white duration-200 hover:border-white p-2 rounded-3xl border border-gray-500 whitespace-nowrap ${style}`}
+      onClick={(e) => {
+        e.preventDefault();
+        handelAddToCart({ id, price });
+      }}
+      className={`cursor-pointer text-base md:text-lg font-medium px-4 py-2 rounded-full border transition-all duration-300 whitespace-nowrap
+        bg-white border-zinc-400 text-black hover:bg-sky-500 hover:text-white hover:border-sky-500
+        dark:bg-zinc-900 dark:border-zinc-700 dark:text-white dark:hover:bg-sky-600 dark:hover:border-sky-600
+        ${style}`}
+      dir={dir}
     >
       {tCardButton("button")}
     </div>

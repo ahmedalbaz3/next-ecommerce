@@ -83,48 +83,72 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-white dark:bg-zinc-950 transition-colors duration-500">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight">
+          <h1 className="text-4xl font-bold tracking-tight text-black dark:text-white">
             {tSignup("title")}
           </h1>
-          <p className="text-gray-500 mt-2">{tSignup("subtitle")}</p>
+          <p className="text-gray-500 dark:text-zinc-400 mt-2">
+            {tSignup("subtitle")}
+          </p>
         </div>
 
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-          <div className="relative">
+          <div className="relative text-sm font-medium text-black dark:text-zinc-300">
             {tSignup("name")}
             <input
               {...register("name")}
               type="text"
               placeholder={tSignup("name")}
-              className="w-full pl-12 pr-4 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all"
+              className={`w-full px-4 py-4 bg-gray-50 dark:bg-zinc-900 border rounded-2xl focus:bg-white dark:focus:bg-zinc-950 focus:ring-2 focus:ring-black dark:focus:ring-white outline-none transition-all duration-300 text-black dark:text-white mt-1 ${
+                errors.name
+                  ? "border-red-500"
+                  : "border-transparent dark:border-zinc-800"
+              }`}
             />
-            {errors.name && <p className="warning">{errors.name.message}</p>}
+            {errors.name && (
+              <p className="text-red-500 text-xs mt-1 px-1">
+                {errors.name.message}
+              </p>
+            )}
           </div>
 
-          <div className="relative">
+          <div className="relative text-sm font-medium text-black dark:text-zinc-300">
             {tSignup("mail")}
             <input
               {...register("mail")}
               type="email"
               placeholder={tSignup("mail")}
-              className="w-full pl-12 pr-4 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all"
+              className={`w-full px-4 py-4 bg-gray-50 dark:bg-zinc-900 border rounded-2xl focus:bg-white dark:focus:bg-zinc-950 focus:ring-2 focus:ring-black dark:focus:ring-white outline-none transition-all duration-300 text-black dark:text-white mt-1 ${
+                errors.mail
+                  ? "border-red-500"
+                  : "border-transparent dark:border-zinc-800"
+              }`}
             />
-            {errors.mail && <p className="warning">{errors.mail.message}</p>}
+            {errors.mail && (
+              <p className="text-red-500 text-xs mt-1 px-1">
+                {errors.mail.message}
+              </p>
+            )}
           </div>
 
-          <div className="relative">
+          <div className="relative text-sm font-medium text-black dark:text-zinc-300">
             {tSignup("password")}
             <input
               {...register("password")}
               type="password"
               placeholder={tSignup("password")}
-              className="w-full pl-12 pr-4 py-4 bg-gray-50 border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all"
+              className={`w-full px-4 py-4 bg-gray-50 dark:bg-zinc-900 border rounded-2xl focus:bg-white dark:focus:bg-zinc-950 focus:ring-2 focus:ring-black dark:focus:ring-white outline-none transition-all duration-300 text-black dark:text-white mt-1 ${
+                errors.password
+                  ? "border-red-500"
+                  : "border-transparent dark:border-zinc-800"
+              }`}
             />
             {errors.password && (
-              <p className="warning">{errors.password.message}</p>
+              <p className="text-red-500 text-xs mt-1 px-1">
+                {errors.password.message}
+              </p>
             )}
           </div>
 
@@ -132,36 +156,43 @@ export default function SignupPage() {
             <div className="flex items-center gap-3 px-2">
               <input
                 type="checkbox"
-                className="mt-1 accent-black"
+                className="mt-1 accent-black dark:accent-white h-4 w-4 cursor-pointer"
                 id="terms"
                 {...register("acceptTerms")}
               />
 
               <label
                 htmlFor="terms"
-                className="text-xs text-gray-500 leading-tight"
+                className="text-xs text-gray-500 dark:text-zinc-400 leading-tight cursor-pointer"
               >
-                {tSignup("terms")}
-                <span className="underline">{tSignup("termsLink")}</span>{" "}
+                {tSignup("terms")}{" "}
+                <span className="underline text-black dark:text-white">
+                  {tSignup("termsLink")}
+                </span>{" "}
                 {tSignup("and")}{" "}
-                <span className="underline">{tSignup("privacyLink")}</span>.
+                <span className="underline text-black dark:text-white">
+                  {tSignup("privacyLink")}
+                </span>
+                .
               </label>
             </div>
             {errors.acceptTerms && (
-              <p className="warning">{errors.acceptTerms.message}</p>
+              <p className="text-red-500 text-xs mt-1 px-1">
+                {errors.acceptTerms.message}
+              </p>
             )}
           </div>
 
-          <button className="w-full bg-black text-white py-4 rounded-2xl font-bold hover:bg-gray-800 transition-all">
+          <button className="w-full bg-black dark:bg-white text-white dark:text-black py-4 rounded-2xl font-bold hover:bg-gray-800 dark:hover:bg-zinc-200 transition-all duration-300 active:scale-[0.98] cursor-pointer">
             {tSignup("submit")}
           </button>
         </form>
 
-        <p className="text-center text-gray-500">
-          {tSignup("hasAccount")}
+        <p className="text-center text-gray-500 dark:text-zinc-500">
+          {tSignup("hasAccount")}{" "}
           <Link
             href="/auth/login"
-            className="text-black font-bold hover:underline"
+            className="text-black dark:text-white font-bold hover:underline"
           >
             {tSignup("login")}
           </Link>

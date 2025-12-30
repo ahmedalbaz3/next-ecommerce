@@ -24,7 +24,6 @@ export default function LoginPage() {
 
   const logInSchema = z.object({
     mail: z
-
       .email(t("validation.mailFormat"))
       .regex(EMAIL_REGEX, t("validation.mailSecurity")),
     password: z
@@ -73,43 +72,57 @@ export default function LoginPage() {
 
   return (
     <div
-      className="min-h-[80vh] flex items-center justify-center px-4"
+      className="min-h-screen flex items-center justify-center px-4 bg-white dark:bg-zinc-950 transition-colors duration-500"
       dir={isRtl ? "rtl" : "ltr"}
     >
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight">{t("title")}</h1>
-          <p className="text-gray-500 mt-2">{t("subtitle")}</p>
+          <h1 className="text-4xl font-bold tracking-tight text-black dark:text-white transition-colors">
+            {t("title")}
+          </h1>
+          <p className="text-gray-500 dark:text-zinc-400 mt-2 transition-colors">
+            {t("subtitle")}
+          </p>
         </div>
 
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-1">
-            <label className="text-sm font-medium px-1">{t("mail")}</label>
+            <label className="text-sm font-medium px-1 text-black dark:text-zinc-300">
+              {t("mail")}
+            </label>
             <input
               {...register("mail")}
               type="email"
               placeholder={t("mailPlaceholder")}
-              className={`w-full px-4 py-4 bg-gray-50 border rounded-2xl focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all ${
-                errors.mail ? "border-red-500" : "border-transparent"
+              className={`w-full px-4 py-4 bg-gray-50 dark:bg-zinc-900 border rounded-2xl focus:bg-white dark:focus:bg-zinc-950 focus:ring-2 focus:ring-black dark:focus:ring-white outline-none transition-all duration-300 text-black dark:text-white ${
+                errors.mail
+                  ? "border-red-500"
+                  : "border-transparent dark:border-zinc-800"
               }`}
             />
             {errors.mail && (
-              <p className="text-red-500 text-xs px-1">{errors.mail.message}</p>
+              <p className="text-red-500 text-xs px-1 font-medium">
+                {errors.mail.message}
+              </p>
             )}
           </div>
 
           <div className="space-y-1">
-            <label className="text-sm font-medium px-1">{t("password")}</label>
+            <label className="text-sm font-medium px-1 text-black dark:text-zinc-300">
+              {t("password")}
+            </label>
             <input
               {...register("password")}
               type="password"
               placeholder={t("passwordPlaceholder")}
-              className={`w-full px-4 py-4 bg-gray-50 border rounded-2xl focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all ${
-                errors.password ? "border-red-500" : "border-transparent"
+              className={`w-full px-4 py-4 bg-gray-50 dark:bg-zinc-900 border rounded-2xl focus:bg-white dark:focus:bg-zinc-950 focus:ring-2 focus:ring-black dark:focus:ring-white outline-none transition-all duration-300 text-black dark:text-white ${
+                errors.password
+                  ? "border-red-500"
+                  : "border-transparent dark:border-zinc-800"
               }`}
             />
             {errors.password && (
-              <p className="text-red-500 text-xs px-1">
+              <p className="text-red-500 text-xs px-1 font-medium">
                 {errors.password.message}
               </p>
             )}
@@ -118,22 +131,25 @@ export default function LoginPage() {
           <div className={`flex ${isRtl ? "justify-start" : "justify-end"}`}>
             <button
               type="button"
-              className="text-sm font-medium hover:underline"
+              className="text-sm font-medium text-black dark:text-zinc-400 hover:underline cursor-pointer"
             >
               {t("forgotPassword")}
             </button>
           </div>
 
-          <button className="w-full bg-black text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-gray-800 transition-all transform active:scale-[0.98]">
+          <button
+            type="submit"
+            className="w-full bg-black dark:bg-white text-white dark:text-black py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-gray-800 dark:hover:bg-zinc-200 transition-all transform active:scale-[0.98] cursor-pointer"
+          >
             {t("submit")}
           </button>
         </form>
 
-        <p className="text-center text-gray-500">
+        <p className="text-center text-gray-500 dark:text-zinc-500">
           {t("noAccount")}{" "}
           <Link
             href="/auth/signup"
-            className="text-black font-bold hover:underline"
+            className="text-black dark:text-white font-bold hover:underline"
           >
             {t("createOne")}
           </Link>

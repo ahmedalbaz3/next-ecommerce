@@ -33,52 +33,53 @@ export default function AccountPage() {
   if (!mounted) return null;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12" dir={isRtl ? "rtl" : "ltr"}>
-      <div className="flex flex-col md:flex-row gap-12">
-        <aside className="w-full md:w-64 space-y-2">
-          <div className="mb-8 px-4">
-            <h1 className="text-2xl font-bold tracking-tight">
-              {t("sidebar.title")}
-            </h1>
-            <p className="text-gray-500 text-sm">
-              {t("sidebar.welcome", { name: user?.name || "User" })}
-            </p>
-          </div>
+    <div className="min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-500">
+      <div className="max-w-6xl mx-auto px-4 py-12" dir={isRtl ? "rtl" : "ltr"}>
+        <div className="flex flex-col md:flex-row gap-12">
+          <aside className="w-full md:w-64 space-y-2">
+            <div className="mb-8 px-4">
+              <h1 className="text-2xl font-bold tracking-tight text-black dark:text-white">
+                {t("sidebar.title")}
+              </h1>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
+                {t("sidebar.welcome", { name: user?.name || "User" })}
+              </p>
+            </div>
 
-          <nav className="space-y-1">
-            <TabButton
-              active={activeTab === "profile"}
-              onClick={() => setActiveTab("profile")}
-              label={t("profile.title")}
-            />
-            <TabButton
-              active={activeTab === "orders"}
-              onClick={() => setActiveTab("orders")}
-              label={t("orders.title")}
-            />
+            <nav className="space-y-1">
+              <TabButton
+                active={activeTab === "profile"}
+                onClick={() => setActiveTab("profile")}
+                label={t("profile.title")}
+              />
+              <TabButton
+                active={activeTab === "orders"}
+                onClick={() => setActiveTab("orders")}
+                label={t("orders.title")}
+              />
 
-            <button
-              onClick={handleLogout}
-              className="w-full flex items-center gap-3 px-4 py-3 mt-4 text-red-500 hover:bg-red-50 rounded-xl transition-colors font-medium"
-            >
-              {t("sidebar.logout")}
-            </button>
-          </nav>
-        </aside>
+              <button
+                onClick={handleLogout}
+                className="w-full flex items-center gap-3 px-4 py-3 mt-4 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-xl transition-all duration-300 font-medium cursor-pointer"
+              >
+                {t("sidebar.logout")}
+              </button>
+            </nav>
+          </aside>
 
-        <main className="flex-1 bg-white border border-gray-100 rounded-3xl p-6 md:p-10 shadow-sm">
-          {activeTab === "profile" ? (
-            <ProfileTab t={t} user={user} />
-          ) : (
-            <OrdersTab t={t} isRtl={isRtl} />
-          )}
-        </main>
+          <main className="flex-1 bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-3xl p-6 md:p-10 shadow-sm transition-all duration-500">
+            {activeTab === "profile" ? (
+              <ProfileTab t={t} user={user} />
+            ) : (
+              <OrdersTab t={t} isRtl={isRtl} />
+            )}
+          </main>
+        </div>
       </div>
     </div>
   );
 }
 
-// Sub-components for cleaner code
 const TabButton = ({
   active,
   onClick,
@@ -90,10 +91,10 @@ const TabButton = ({
 }) => (
   <button
     onClick={onClick}
-    className={`w-full text-start px-4 py-3 rounded-xl transition-all font-medium ${
+    className={`w-full text-start px-4 py-3 rounded-xl transition-all duration-300 font-medium cursor-pointer ${
       active
-        ? "bg-black text-white shadow-lg shadow-black/10"
-        : "text-gray-500 hover:bg-gray-100"
+        ? "bg-black text-white dark:bg-white dark:text-black shadow-lg shadow-black/10"
+        : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-zinc-800"
     }`}
   >
     {label}
@@ -103,7 +104,9 @@ const TabButton = ({
 const ProfileTab = ({ t, user }: any) => (
   <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
     <section>
-      <h2 className="text-2xl font-bold mb-8">{t("profile.title")}</h2>
+      <h2 className="text-2xl font-bold mb-8 text-black dark:text-white">
+        {t("profile.title")}
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <InputGroup
           label={t("profile.fullName")}
@@ -115,7 +118,7 @@ const ProfileTab = ({ t, user }: any) => (
           type="email"
         />
       </div>
-      <button className="mt-10 bg-black text-white p-5 rounded-2xl text-sm font-bold hover:bg-gray-800 transition-all active:scale-95">
+      <button className="mt-10 bg-black dark:bg-white text-white dark:text-black p-5 rounded-2xl text-sm font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 active:scale-95 cursor-pointer">
         {t("profile.save")}
       </button>
     </section>
@@ -124,31 +127,33 @@ const ProfileTab = ({ t, user }: any) => (
 
 const InputGroup = ({ label, defaultValue, type = "text" }: any) => (
   <div className="space-y-2">
-    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 px-1">
+    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 px-1">
       {label}
     </label>
     <input
       type={type}
       defaultValue={defaultValue}
-      className="w-full p-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:bg-white focus:ring-2 focus:ring-black focus:border-transparent transition-all"
+      className="w-full p-4 bg-gray-50 dark:bg-zinc-800 border border-transparent dark:border-zinc-700 rounded-2xl outline-none focus:bg-white dark:focus:bg-zinc-950 focus:ring-2 focus:ring-black dark:focus:ring-white text-black dark:text-white transition-all duration-300"
     />
   </div>
 );
 
 const OrdersTab = ({ t, isRtl }: any) => (
   <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <h2 className="text-2xl font-bold mb-6">{t("orders.title")}</h2>
+    <h2 className="text-2xl font-bold mb-6 text-black dark:text-white">
+      {t("orders.title")}
+    </h2>
     {[1, 2].map((order) => (
       <div
         key={order}
-        className="border border-gray-100 rounded-2xl p-6 hover:border-black transition-all cursor-pointer group"
+        className="border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 hover:border-black dark:hover:border-white transition-all duration-300 cursor-pointer group bg-white dark:bg-zinc-900"
       >
         <div className="flex flex-wrap justify-between items-center gap-4">
           <div>
-            <p className="font-bold">
+            <p className="font-bold text-black dark:text-white">
               {t("orders.orderNumber", { number: `ORD-202${order}` })}
             </p>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-400 dark:text-gray-500">
               {t("orders.date", { date: "Dec 12, 2025" })}
             </p>
           </div>
@@ -158,8 +163,10 @@ const OrdersTab = ({ t, isRtl }: any) => (
             }`}
           >
             <div>
-              <p className="font-bold text-lg">$145.00</p>
-              <span className="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded-md font-bold uppercase">
+              <p className="font-bold text-lg text-black dark:text-white">
+                $145.00
+              </p>
+              <span className="text-[10px] bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-2 py-1 rounded-md font-bold uppercase">
                 {t("orders.status")}
               </span>
             </div>

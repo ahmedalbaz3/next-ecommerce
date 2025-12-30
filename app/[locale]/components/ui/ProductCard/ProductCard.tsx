@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { TProduct } from "@/types/TProduct";
@@ -16,36 +18,59 @@ const ProductCard = ({
   image,
   inStock,
   isRtl = false,
-  description_ar,
-  description_en,
 }: productCardProps) => {
-  const tProductCard = useTranslations("productCard");
+  const t = useTranslations("productCard");
 
   return (
-    <div className="w-full h-120 rounded-2xl border border-gray-300 p-4 flex flex-col items-center mx-auto">
+    <div
+      className="group relative w-full h-[32rem] rounded-3xl border border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4 flex flex-col transition-all duration-500 ease-in-out hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-white/10"
+      dir={isRtl ? "rtl" : "ltr"}
+    >
       <Link
         href={`/product/${id}`}
-        className="image rounded-xl overflow-hidden mb-4 w-full"
+        className="relative aspect-square rounded-2xl overflow-hidden mb-6 bg-gray-50 dark:bg-zinc-800"
       >
         <Image
-          className="w-full"
+          className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
           src={image}
           alt={isRtl ? name_ar : name_en}
-          width={200}
-          height={200}
-          loading="eager"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
         />
+
+        {!inStock && (
+          <div className="absolute inset-0 bg-white/60 dark:bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-10">
+            <span className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
+              {t("outOfStock")}
+            </span>
+          </div>
+        )}
       </Link>
-      <div className="details w-full text-2xl">
-        <div className="top flex justify-between items-center">
-          <h3>{isRtl ? name_ar : name_en}</h3>
-          <AddToCart id={id} price={price} dir={isRtl ? "rtl" : "ltr"} />
+
+      <div className="flex flex-col flex-1 justify-between">
+        <div className="space-y-2">
+          <div className="flex justify-between items-start gap-4">
+            <h3 className="text-xl font-bold tracking-tight text-black dark:text-white line-clamp-2 transition-colors duration-500">
+              {isRtl ? name_ar : name_en}
+            </h3>
+
+            <AddToCart id={id} price={price} dir={isRtl ? "rtl" : "ltr"} />
+          </div>
         </div>
-        <div className="bottom flex gap-1.5 mt-4 items-center text-xl ">
-          <span className=" text-sky-400 font-semibold text-2xl">
-            {tProductCard("price")}
-          </span>
-          <div className="value">${price}</div>
+
+        <div className="flex items-end justify-between mt-4">
+          <div className="flex flex-col">
+            <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-gray-400 dark:text-zinc-500 transition-colors duration-500">
+              {t("price")}
+            </span>
+            <span className="text-2xl font-black text-black dark:text-white transition-colors duration-500">
+              ${price}
+            </span>
+          </div>
+
+          <div className="text-[10px] font-medium text-gray-400 dark:text-zinc-500">
+            {t("inclTax") || "+ Tax"}
+          </div>
         </div>
       </div>
     </div>

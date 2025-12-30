@@ -3,7 +3,9 @@
     "home": "Home",
     "products": "Products",
     "contact": "Contact Us",
-    "ourProducts": "Our Products"
+    "ourProducts": "Our Products",
+    "loading": "Fetching luxury pieces...",
+    "error": "Something went wrong. Please try again."
   },
   "product": {
     "inStock": "In stock",
@@ -33,7 +35,9 @@
   "productCard": {
     "title": "Our Products",
     "price": "Price",
-    "button": "add to cart"
+    "button": "add to cart",
+    "inclTax": "Include tax",
+    "outOfStock": "Out of stock"
   },
   "about": {
     "title": "We redefine  modern living.",

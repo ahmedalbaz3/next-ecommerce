@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface CategoryCardProps {
   imageSrc: string;
@@ -16,10 +17,24 @@ const CategoryCard = ({
   return (
     <Link
       href={`/categories/${slug}`}
-      className="p-2 border border-black rounded-lg flex flex-col items-center justify-center gap-4 hover:bg-sky-400 hover:text-white duration-200 cursor-pointer size-55 "
+      className="group flex flex-col items-center justify-center gap-4 p-4 
+             size-50 shrink-0 rounded-xl border cursor-pointer transition-all duration-500
+             bg-white border-black text-black hover:bg-black hover:text-white
+             dark:bg-zinc-900 dark:border-zinc-700 dark:text-white dark:hover:bg-white dark:hover:text-black"
     >
-      <img src={imageSrc} alt={imageAlt} width={50} height={50} />
-      <h3>{title}</h3>
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        width={50}
+        height={50}
+        className="transition-all duration-500 
+               group-hover:invert 
+               dark:invert dark:group-hover:invert-0 dark:group-hover:brightness-0"
+      />
+
+      <h3 className="font-medium text-center transition-colors duration-500">
+        {title}
+      </h3>
     </Link>
   );
 };

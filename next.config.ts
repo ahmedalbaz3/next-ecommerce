@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
   experimental: {
     globalNotFound: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "**",
+      },
+    ],
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

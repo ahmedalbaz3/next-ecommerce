@@ -32,3 +32,49 @@ body {
 .warning {
   @apply text-red-600 text-sm mt-2;
 }
+
+@theme {
+  /* Define your Brand Colors */
+  --color-primary: #000000;
+  --color-accent: #3b82f6;
+
+  /* Define Custom Transitions */
+  --transition-speed: 0.3s;
+
+  /* Custom Border Radius */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+/* Fix for smooth theme switching */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Custom Variant for Dark Mode (v4 logic) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Base Styles */
+@layer base {
+  body {
+    @apply bg-white text-black antialiased transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-zinc-950 text-white;
+  }
+}
+
+/* Utility for nice inputs across the app */
+@layer components {
+  .input-field {
+    @apply w-full p-4 bg-gray-50 border border-transparent rounded-2xl 
+           focus:bg-white focus:ring-2 focus:ring-black outline-none transition-all
+           dark:bg-zinc-900 dark:focus:bg-zinc-800 dark:focus:ring-white;
+  }
+}
+
+/* Add a subtle glow to primary buttons in dark mode */
+.dark .hero .actions button:first-child {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}

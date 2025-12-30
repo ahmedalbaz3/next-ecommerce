@@ -5,6 +5,7 @@ import Header from "@/app/[locale]/components/layout/Header/Header";
 import ReduxProvider from "@/app/[locale]/components/reduxProvider";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -28,17 +29,23 @@ export default async function RootLayout({
   const { locale } = await params;
 
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html
+      lang={locale}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+      suppressHydrationWarning
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-amber-400 overflow-x-hidden`}
       >
         <NextIntlClientProvider messages={messages}>
           <ReduxProvider>
-            <Header />
-            <main className="min-h-dvh">{children}</main>
-            <footer className="w-full bg-black p-4 text-center mt-10 text-2xl text-white">
-              Copyright © 2025
-            </footer>
+            <ThemeProvider>
+              <Header />
+              <main className="min-h-dvh">{children}</main>
+              <footer className="w-full bg-black px-4 text-center py-10 text-2xl text-white">
+                Copyright © 2025
+              </footer>
+            </ThemeProvider>
           </ReduxProvider>
         </NextIntlClientProvider>
       </body>
