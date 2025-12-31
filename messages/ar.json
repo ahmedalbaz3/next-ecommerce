@@ -12,12 +12,16 @@
     "outOfStock": "غير متوفر"
   },
   "header": {
+    "home": "الرئيسية",
     "logo": "متجر الكتروني",
     "logout": "خروج",
     "login": "دخول",
+    "signup": "التسجيل",
     "contact": "تواصل معنا",
     "about": "حولنا",
     "products": "المنتجات",
+    "search": "البحث",
+    "allCat": "كل المجموعات",
     "aria": {
       "openMenu": "قايمه التنقل",
       "viewCart": "تصفح عربه التسوق"

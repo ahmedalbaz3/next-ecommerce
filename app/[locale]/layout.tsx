@@ -6,6 +6,7 @@ import ReduxProvider from "@/app/[locale]/components/reduxProvider";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "./components/ThemeProvider";
+import Header2 from "./components/layout/Header/Header2";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({

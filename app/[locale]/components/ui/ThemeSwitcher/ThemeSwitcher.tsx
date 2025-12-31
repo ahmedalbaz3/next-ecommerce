@@ -15,7 +15,7 @@ export const ThemeSwitcher = () => {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+      className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer"
       aria-label="Toggle Theme"
     >
       {theme === "dark" ? (

@@ -12,12 +12,16 @@
     "outOfStock": "Out of stock"
   },
   "header": {
+    "home": "Home",
     "logo": " E-Commerce",
     "logout": "Logout",
     "login": "Login",
-    "contact": "Contact",
-    "about": "About",
+    "signup": "Sign Up",
+    "contact": "Contact Us",
+    "about": "About Us",
     "products": "Products",
+    "search": "Search",
+    "allCat": "All Categories",
     "aria": {
       "openMenu": "navigation menu",
       "viewCart": "view cart"

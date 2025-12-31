@@ -57,7 +57,7 @@ body {
 /* Base Styles */
 @layer base {
   body {
-    @apply bg-white text-black antialiased transition-colors duration-300;
+    @apply bg-white text-black antialiased transition-colors duration-200;
   }
 
   .dark body {
@@ -77,4 +77,14 @@ body {
 /* Add a subtle glow to primary buttons in dark mode */
 .dark .hero .actions button:first-child {
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* ============= SHARED UTILS ============= */
+
+.header-actions {
+  @apply py-2 px-2 hover:bg-gray-400/50 rounded-full cursor-pointer;
+}
+
+.header-links {
+  @apply py-5 px-3 hover:text-yellow-500 hover:underline;
 }

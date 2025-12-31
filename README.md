@@ -12,12 +12,12 @@ The project is **production-ready**, easy to extend, and fully optimized for **d
 
 ## Key Features
 
-- Product listing and product details pages  
-- Cart management  
-- Authentication and checkout forms with validation  
-- Client-side navigation using Next.js App Router  
-- SEO optimization using metadata and structured layouts  
-- Fully responsive UI  
+- Product listing and product details pages
+- Cart management
+- Authentication and checkout forms with validation
+- Client-side navigation using Next.js App Router
+- SEO optimization using metadata and structured layouts
+- Fully responsive UI
 - **Internationalization (i18n) with RTL / LTR layout support**
 
 ---
@@ -26,22 +26,22 @@ The project is **production-ready**, easy to extend, and fully optimized for **d
 
 ### Frontend
 
-- **Next.js 16 (App Router)** – React framework for production  
-- **React 19** – UI library  
-- **TypeScript** – Type-safe development  
-- **Redux Toolkit + React Redux** – Global state management  
-- **React Hook Form + Zod** – Form handling and schema validation  
-- **next-intl / i18next** – Internationalization and localization  
+- **Next.js 16 (App Router)** – React framework for production
+- **React 19** – UI library
+- **TypeScript** – Type-safe development
+- **Redux Toolkit + React Redux** – Global state management
+- **React Hook Form + Zod** – Form handling and schema validation
+- **next-intl / i18next** – Internationalization and localization
 
 ### Styling
 
-- **TailwindCSS 4** – Utility-first styling  
+- **TailwindCSS 4** – Utility-first styling
 
 ### Tooling & Build
 
-- **ESLint + TypeScript ESLint** – Code quality and consistency  
-- **PostCSS + Autoprefixer** – CSS processing  
-- **MSW** – API mocking for development and testing  
+- **ESLint + TypeScript ESLint** – Code quality and consistency
+- **PostCSS + Autoprefixer** – CSS processing
+- **MSW** – API mocking for development and testing
 
 ---
 
@@ -49,9 +49,9 @@ The project is **production-ready**, easy to extend, and fully optimized for **d
 
 The application fully supports **both Left-to-Right (LTR) and Right-to-Left (RTL) layouts**.
 
-- Dynamic layout direction switching based on the selected language  
-- TailwindCSS utilities and logical CSS properties for layout consistency  
-- Proper handling of typography, spacing, and alignment in RTL mode  
+- Dynamic layout direction switching based on the selected language
+- TailwindCSS utilities and logical CSS properties for layout consistency
+- Proper handling of typography, spacing, and alignment in RTL mode
 
 ---
 
@@ -65,3 +65,6 @@ Follow the steps below to run the project locally.
 git clone https://github.com/ahmedalbaz3/next-ecommerce.git
 cd next-ecommerce
 pnpm install
+```
+
+## Don't forget to add .env file in the root with [NEXT_PUBLIC_BASE_URL=http://localhost:3000] or the domain you use
