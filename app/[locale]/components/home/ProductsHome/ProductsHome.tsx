@@ -8,7 +8,7 @@ const ProductsHome = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [mounted, setMounted] = useState(false); // Hydration Guard
+  const [mounted, setMounted] = useState(false);
 
   const isRtl = useAppSelector((state) => state.dirReducer.isRtl);
   const t = useTranslations("common");
@@ -21,7 +21,7 @@ const ProductsHome = () => {
         const res = await fetch("/api/products");
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
-        setProducts(data.products);
+        setProducts(data.products.slice(0, 8));
       } catch (err) {
         setError("Failed to load products.");
       } finally {
@@ -31,7 +31,6 @@ const ProductsHome = () => {
     fetchProducts();
   }, []);
 
-  // Prevent hydration mismatch between server and client
   if (!mounted) return null;
 
   if (isLoading) {
@@ -84,6 +83,7 @@ const ProductsHome = () => {
                 isRtl={isRtl}
                 description_ar={product.description_ar}
                 description_en={product.description_en}
+                oldPrice={product.oldPrice}
               />
             </div>
           ))}

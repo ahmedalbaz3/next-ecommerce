@@ -6,6 +6,10 @@ interface CategoryCardProps {
   imageAlt: string;
   title: string;
   slug?: string;
+  id: string;
+  name_en: string;
+  name_ar: string;
+  isRtl: boolean;
 }
 
 const CategoryCard = ({
@@ -13,29 +17,28 @@ const CategoryCard = ({
   imageAlt,
   title,
   slug,
+  id,
+  name_en,
+  name_ar,
+  isRtl,
 }: CategoryCardProps) => {
   return (
-    <Link
-      href={`/categories/${slug}`}
-      className="group flex flex-col items-center justify-center gap-4 p-4 
-             size-50 shrink-0 rounded-xl border cursor-pointer transition-all duration-500
-             bg-white border-black text-black hover:bg-black hover:text-white
-             dark:bg-zinc-900 dark:border-zinc-700 dark:text-white dark:hover:bg-white dark:hover:text-black"
-    >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        width={50}
-        height={50}
-        className="transition-all duration-500 
-               group-hover:invert 
-               dark:invert dark:group-hover:invert-0 dark:group-hover:brightness-0"
-      />
-
-      <h3 className="font-medium text-center transition-colors duration-500">
-        {title}
-      </h3>
-    </Link>
+    <div key={id} className="category-card">
+      <Link href={`/categories/${slug}`}>
+        <div className="image relative aspect-square overflow-hidden lg:rounded-lg">
+          <Image
+            src={imageSrc}
+            alt={isRtl ? name_ar : name_en}
+            fill
+            className="object-cover transition-transform duration-300 hover:scale-105"
+            sizes="(max-width: 768px) 50vw, 33vw"
+          />
+          <div className="text absolute top-0 left-0 size-full bg-black/50 hover:bg-black/0 transition-colors duration-300 flex items-center justify-center text-white text-2xl font-semibold z-10">
+            {isRtl ? name_ar : name_en}
+          </div>
+        </div>
+      </Link>
+    </div>
   );
 };
 

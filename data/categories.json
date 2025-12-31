@@ -5,42 +5,42 @@
       "slug": "apparel",
       "name_en": "Apparel",
       "name_ar": "ملابس",
-      "image": "/images/headphone.svg"
+      "image": "/images/apparel.jpg"
     },
     {
       "id": "c2",
       "slug": "electronics",
       "name_en": "Electronics",
       "name_ar": "إلكترونيات",
-      "image": "/images/camera.svg"
+      "image": "/images/electronics.jpg"
     },
     {
       "id": "c3",
       "slug": "home",
       "name_en": "Home",
       "name_ar": "المنزل",
-      "image": "/images/headphone.svg"
+      "image": "/images/home.jpg"
     },
     {
       "id": "c4",
       "slug": "beauty",
       "name_en": "Beauty",
       "name_ar": "الجمال",
-      "image": "/images/headphone.svg"
+      "image": "/images/beauty.jpg"
     },
     {
       "id": "c5",
       "slug": "sports",
       "name_en": "Sports",
       "name_ar": "رياضة",
-      "image": "/images/headphone.svg"
+      "image": "/images/sports.jpg"
     },
     {
       "id": "c6",
       "slug": "accessories",
       "name_en": "Accessories",
       "name_ar": "إكسسوارات",
-      "image": "/images/headphone.svg"
+      "image": "/images/accessories.jpg"
     }
   ]
 }

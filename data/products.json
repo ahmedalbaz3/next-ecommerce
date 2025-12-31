@@ -11,7 +11,8 @@
       "description_en": "Soft cotton everyday tee.",
       "description_ar": "تي شيرت قطني ناعم للاستخدام اليومي.",
       "inStock": true,
-      "sizes": ["S", "M", "L", "XL"]
+      "sizes": ["S", "M", "L", "XL"],
+      "oldPrice": 30
     },
     {
       "id": "p2",
@@ -37,7 +38,8 @@
       "description_en": "Noise cancelling headphones.",
       "description_ar": "سماعات عازلة للضوضاء.",
       "inStock": false,
-      "sizes": ["S", "M", "L", "XL"]
+      "sizes": ["S", "M", "L", "XL"],
+      "oldPrice": 120
     },
     {
       "id": "p4",
@@ -63,7 +65,8 @@
       "description_en": "Ceramic coffee mug.",
       "description_ar": "كوب قهوة من السيراميك.",
       "inStock": true,
-      "sizes": ["S", "M", "L", "XL"]
+      "sizes": ["S", "M", "L", "XL"],
+      "oldPrice": 25
     },
     {
       "id": "p6",
@@ -128,7 +131,8 @@
       "description_en": "Non-slip exercise mat.",
       "description_ar": "سجادة تمارين غير قابلة للانزلاق.",
       "inStock": false,
-      "sizes": ["S", "M", "L", "XL"]
+      "sizes": ["S", "M", "L", "XL"],
+      "oldPrice": 20
     },
     {
       "id": "p11",
@@ -167,7 +171,8 @@
       "description_en": "Health tracking and notifications.",
       "description_ar": "تتبع الصحة والاشعارات.",
       "inStock": true,
-      "sizes": ["Universal"]
+      "sizes": ["Universal"],
+      "oldPrice": 300
     },
     {
       "id": "p14",
@@ -193,7 +198,8 @@
       "description_en": "Breathable linen for summer.",
       "description_ar": "كتان يسمح بمرور الهواء للصيف.",
       "inStock": true,
-      "sizes": ["M", "L", "XL"]
+      "sizes": ["M", "L", "XL"],
+      "oldPrice": 90
     },
     {
       "id": "p16",

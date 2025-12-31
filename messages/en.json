@@ -39,7 +39,7 @@
   "productCard": {
     "title": "Our Products",
     "price": "Price",
-    "button": "add to cart",
+    "button": "Add to cart",
     "inclTax": "Include tax",
     "outOfStock": "Out of stock"
   },
@@ -217,5 +217,13 @@
       "merchandise": "Merchandise"
     },
     "copyright": "© Bogdan Bulakh, {year}"
+  },
+  "Offer": {
+    "exclusive": "ONLINE EXCLUSIVE",
+    "discount": "15% OFF",
+    "category_line1": "ACCENT CHAIRS,",
+    "category_line2": "TABLES & OTTOMANS",
+    "button": "Shop now",
+    "alt": "Special offer image"
   }
 }

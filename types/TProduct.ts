@@ -12,4 +12,5 @@ export interface TProduct {
   description_en: string;
   description_ar: string;
   categoryId?: string;
+  oldPrice?: number;
 }
