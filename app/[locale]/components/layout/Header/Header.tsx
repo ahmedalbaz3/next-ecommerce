@@ -11,8 +11,10 @@ import { useAppDispatch, useAppSelector } from "@/store/actions";
 import { useTranslations } from "next-intl";
 import { loadAuthFromStorage, logout } from "@/store/slices/authSlice";
 import { useEffect, useState } from "react";
+import { TProduct } from "@/types/TProduct";
+import Image from "next/image";
 
-const Header2 = () => {
+const Header = () => {
   const t = useTranslations("header");
   const router = useRouter();
   const pathname = usePathname();
@@ -34,7 +36,37 @@ const Header2 = () => {
   }, [dispatch]);
   useEffect(() => {
     setIsOpen(false);
+    setQuery("");
   }, [pathname]);
+
+  // =========== Search ===========
+  const [results, setResults] = useState<TProduct[]>([]);
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    console.log(results);
+  }, [results]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (query.trim()) {
+        fetchResults(query);
+      } else {
+        setResults([]);
+      }
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  const fetchResults = async (term: string) => {
+    try {
+      const res = await fetch(`/api/search?q=${encodeURIComponent(term)}`);
+      const data = await res.json();
+      setResults(data);
+    } catch (error) {
+      console.error("Search error:", error);
+    }
+  };
 
   // =========== Helpers ===========
   const togglePageDirection = () => {
@@ -63,7 +95,7 @@ const Header2 = () => {
         </button>
         <form
           action="search"
-          className="w-2/5 items-center  border border-gray-400 hidden md:flex"
+          className="w-2/5 items-center  border border-gray-400 hidden md:flex relative"
           onSubmit={(e) => e.preventDefault()}
         >
           <div className="icon px-3 py-2 ">
@@ -75,17 +107,41 @@ const Header2 = () => {
             placeholder={t("search")}
             className="py-2 outline-0 w-11/12"
             role="search box"
+            onChange={(e) => setQuery(e.target.value)}
           />
           <label htmlFor="search" className="hidden">
             Search
           </label>
-
           <button
             type="submit"
             className="py-2 px-3 bg-amber-400 hover:text-white  text-black font-medium cursor-pointer"
           >
             {t("search")}
           </button>
+          {results.length > 0 && (
+            <div className="w-full p-5 bg-black absolute top-full text-white flex flex-col gap-5">
+              {results.slice(0, 10).map((result) => (
+                <Link
+                  href={`/product/${result.id}`}
+                  key={result.id}
+                  className="reult flex gap-5 items-center"
+                >
+                  <Image
+                    src={result.image}
+                    width={50}
+                    height={50}
+                    alt={result.name_en}
+                  />
+                  <p>
+                    <span className="text-yellow-400 text-xl font-semibold">
+                      {isRtl ? result.name_ar : result.name_en}:{" "}
+                    </span>
+                    {isRtl ? result.description_ar : result.description_en}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          )}
         </form>
         <div className="header-act hidden md:flex ">
           <button
@@ -262,4 +318,4 @@ const Header2 = () => {
   );
 };
 
-export default Header2;
+export default Header;
