@@ -6,7 +6,7 @@ import ReduxProvider from "@/app/[locale]/components/reduxProvider";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "./components/ThemeProvider";
-import Header2 from "./components/layout/Header/Header2";
+import Footer from "./components/layout/Footer/Footer";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -43,9 +43,7 @@ export default async function RootLayout({
             <ThemeProvider>
               <Header />
               <main className="min-h-dvh">{children}</main>
-              <footer className="w-full bg-black px-4 text-center py-10 text-2xl text-white">
-                Copyright © 2025
-              </footer>
+              <Footer />
             </ThemeProvider>
           </ReduxProvider>
         </NextIntlClientProvider>

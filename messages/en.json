@@ -197,5 +197,25 @@
       "name": "Please use your real name (min 7 characters)",
       "terms": "You must accept the terms and conditions"
     }
+  },
+  "Footer": {
+    "brand": {
+      "first": "May",
+      "second": "Bell"
+    },
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "sections": {
+      "features": "Features",
+      "support": "Support",
+      "company": "Company",
+      "legal": "Legal"
+    },
+    "links": {
+      "marketing": "Marketing",
+      "commerce": "Commerce",
+      "analytics": "Analytics",
+      "merchandise": "Merchandise"
+    },
+    "copyright": "© Bogdan Bulakh, {year}"
   }
 }

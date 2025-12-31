@@ -24,7 +24,7 @@ const Hero = () => {
       dir={direction}
     >
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-center min-h-[90vh] max-md:px-4 gap-12">
-        <div className="flex-1 flex flex-col gap-6 text-center md:text-start">
+        <div className="flex-1 flex flex-col gap-6 text-center md:text-start justify-center">
           <h1 className="text-4xl md:text-6xl font-black tracking-tight text-black dark:text-white leading-tight">
             {tHero("title")}
           </h1>
@@ -42,7 +42,7 @@ const Hero = () => {
             <Link href="/product" className="w-full md:w-auto">
               <Button
                 text={tHero("sec")}
-                bg="bg-white text-black border border-gray-200 dark:bg-transparent dark:text-white dark:border-zinc-800 w-full transition-all active:scale-95"
+                bg="bg-amber-500 text-black border border-gray-200 dark:bg-transparent dark:text-white dark:border-zinc-800 w-full transition-all active:scale-95"
               />
             </Link>
           </div>

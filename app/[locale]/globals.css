@@ -82,9 +82,28 @@ body {
 /* ============= SHARED UTILS ============= */
 
 .header-actions {
-  @apply py-2 px-2 hover:bg-gray-400/50 rounded-full cursor-pointer;
+  @apply py-2 px-2 hover:bg-gray-400/50 dark:hover:bg-white/50 rounded-full cursor-pointer;
 }
 
 .header-links {
   @apply py-5 px-3 hover:text-yellow-500 hover:underline;
+}
+
+.col {
+  @apply text-start;
+}
+
+.col-head {
+  @apply text-xl font-semibold text-gray-500  mb-3;
+}
+
+.col-body {
+  @apply text-base;
+}
+
+.col-body ul {
+  @apply flex flex-col gap-1;
+}
+.col-body ul li {
+  @apply cursor-pointer hover:text-gray-400 dark:hover:text-white/50;
 }
