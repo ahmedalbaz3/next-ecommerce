@@ -17,5 +17,7 @@ const nextConfig: NextConfig = {
   },
 };
 
+// tp support internationalization
 const withNextIntl = createNextIntlPlugin();
+
 export default withNextIntl(nextConfig);

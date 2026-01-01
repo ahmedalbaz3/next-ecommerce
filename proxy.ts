@@ -15,7 +15,7 @@ const intlMiddleware = createMiddleware({
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // 1. ADD THIS GUARD: Stop middleware for API routes
+  //  THIS GUARD: To Stop middleware for API routes
   if (pathname.startsWith("/api")) {
     return NextResponse.next();
   }

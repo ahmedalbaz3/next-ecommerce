@@ -1,5 +1,6 @@
 import ProductCard from "@/app/[locale]/components/ui/ProductCard/ProductCard";
 import { TProduct } from "@/types/TProduct";
+import Feature2 from "@/app/[locale]/components/home/FeaturedCategories/Features";
 
 async function getProductsByCategory(slug: string): Promise<TProduct[]> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`, {
@@ -69,6 +70,7 @@ export default async function CategoryPage({
           ))}
         </div>
       </div>
+      <Feature2 params={params} />
     </main>
   );
 }
