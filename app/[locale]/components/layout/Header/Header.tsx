@@ -45,9 +45,6 @@ const Header = () => {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    console.log(results);
-  }, [results]);
-  useEffect(() => {
     const timer = setTimeout(() => {
       console.log(query);
       if (query.trim()) {

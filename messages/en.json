@@ -225,5 +225,9 @@
     "category_line2": "TABLES & OTTOMANS",
     "button": "Shop now",
     "alt": "Special offer image"
+  },
+  "results": {
+    "results": "Search Results",
+    "noResults": "No Results Found for"
   }
 }

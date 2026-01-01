@@ -29,6 +29,7 @@ const ProductCard2 = ({
             alt={isRtl ? name_ar : name_en}
             className="object-cover transition-transform duration-300 hover:scale-110"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
           />
         </Link>
 
@@ -40,7 +41,7 @@ const ProductCard2 = ({
       </div>
       <div className="product-card-bottom flex flex-col gap-3">
         <div className="title dark:text-white text-2xl">
-          {isRtl ? name_ar : name_en}
+          <Link href={`/product/${id}`}>{isRtl ? name_ar : name_en}</Link>
         </div>
         <div className="price text-violet-900 dark:text-violet-400 text-xl font-semibold flex gap-3">
           <span>${price.toFixed(2)}</span>
@@ -50,6 +51,7 @@ const ProductCard2 = ({
             </span>
           )}
         </div>
+
         <AddToCart
           inStock={inStock}
           id={id}
