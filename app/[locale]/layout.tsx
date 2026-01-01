@@ -7,6 +7,7 @@ import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Footer from "./components/layout/Footer/Footer";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -42,6 +43,7 @@ export default async function RootLayout({
           <ReduxProvider>
             <ThemeProvider>
               <Header />
+              <Toaster position="top-right" richColors />
               <main className="min-h-dvh">{children}</main>
               <Footer />
             </ThemeProvider>
