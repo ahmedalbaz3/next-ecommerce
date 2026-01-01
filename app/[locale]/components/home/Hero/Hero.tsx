@@ -55,7 +55,7 @@ const Hero = () => {
               alt="Hero featured product"
               fill
               priority
-              className="object-contain drop-shadow-2xl"
+              className="object-cover drop-shadow-2xl"
               sizes="(max-width: 768px) 100vw, 50vw"
               fetchPriority="high"
             />
