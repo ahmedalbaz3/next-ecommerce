@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import ProductCard from "@/app/[locale]/components/ui/ProductCard/ProductCard";
 import { useAppSelector } from "@/store/actions";
 
-const ProductsHome = () => {
+const ProductsHome = ({ limit }: { limit: number }) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -21,7 +21,7 @@ const ProductsHome = () => {
         const res = await fetch("/api/products");
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
-        setProducts(data.products.slice(0, 8));
+        setProducts(data.products.slice(0, limit));
       } catch (err) {
         setError("Failed to load products.");
       } finally {

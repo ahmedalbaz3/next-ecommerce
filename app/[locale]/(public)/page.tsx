@@ -13,7 +13,7 @@ export default async function Page({
       <Hero />
       <Features params={params} />
       <Offer />
-      <ProductsHome />
+      <ProductsHome limit={8} />
     </main>
   );
 }

@@ -172,93 +172,13 @@ const Header = () => {
       <div className="header-bottom bg-violet-900 ">
         <div className="header-bottom-container container mx-auto items-center justify-between max-md:px-5  hidden md:flex text-white ">
           <div className="header-bottom-left flex  gap-5">
-            <button
-              className=" flex gap-3 p-5 bg-amber-500 hover:bg-amber-500 cursor-pointer text-black text-md font-medium items-center"
+            <Link
+              href="/product"
+              className=" flex gap-3 p-5 bg-amber-500 hover:bg-amber-600 cursor-pointer text-black text-md font-medium items-center"
               aria-label="open menu"
-              onClick={() => setCatOpen(!catOpen)}
             >
-              <Menu />
               <span>{t("allCat")}</span>
-            </button>
-            {catOpen && (
-              <div className="all-categories absolute w-full py-5 border-b bg-white dark:bg-black top-full left-0 text-black dark:text-white">
-                <div className="container mx-auto flex ">
-                  <ul className=" flex flex-col gap-3  border-r-2 px-5">
-                    {[
-                      "Apperal",
-                      "Electronics",
-                      "Home",
-                      "Beauty",
-                      "Sports",
-                      "Accessories",
-                    ].map((el, i) => (
-                      <li key={i}>{el}</li>
-                    ))}
-                  </ul>
-                  <div className="flex-4 list flex px-8 gap-8">
-                    <ul>
-                      <li className="list-head text-violet-900 font-bold mb-2">
-                        Apparel
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        T-Shirts & Tops
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        Jackets & Coats
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        Jeans & Trousers
-                      </li>
-                    </ul>
-
-                    <ul>
-                      <li className="list-head text-violet-900 font-bold mb-2">
-                        Electronics
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        Smartphones
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        Laptops & PCs
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        Headphones
-                      </li>
-                    </ul>
-
-                    <ul>
-                      <li className="list-head text-violet-900 font-bold mb-2">
-                        Beauty
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        Skincare
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        Makeup
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        Fragrances
-                      </li>
-                    </ul>
-
-                    <ul>
-                      <li className="list-head text-violet-900 font-bold mb-2">
-                        Accessories
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        Watches
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        Bags & Wallets
-                      </li>
-                      <li className="hover:text-amber-500 cursor-pointer">
-                        Sunglasses
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            )}
+            </Link>
             <nav>
               <ul className="flex gap-8 py-5">
                 <li>

@@ -3,7 +3,7 @@ import ProductsHome from "@/app/[locale]/components/home/ProductsHome/ProductsHo
 const page = () => {
   return (
     <div>
-      <ProductsHome />
+      <ProductsHome limit={24} />
     </div>
   );
 };
