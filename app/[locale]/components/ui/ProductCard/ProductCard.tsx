@@ -34,7 +34,7 @@ const ProductCard2 = ({
         </Link>
 
         {!inStock && (
-          <span className="state absolute top-2 left-2 px-3 py-1 bg-red-600 text-white text-sm font-bold rounded-sm shadow-md z-10 rtl:left-auto rtl:right-2">
+          <span className="state absolute top-2 left-2 px-3 py-1 bg-red-600 text-white text-sm font-bold rounded-sm shadow-md  rtl:left-auto rtl:right-2">
             {t("outOfStock")}
           </span>
         )}

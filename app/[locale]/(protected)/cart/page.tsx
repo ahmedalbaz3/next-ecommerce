@@ -64,11 +64,13 @@ export default function CartPage() {
                 key={item.id}
                 className="flex gap-4 border-b border-gray-200 dark:border-zinc-800 pb-6 last:border-0"
               >
-                <img
-                  src={item.image || "/products/shoe.jpg"}
-                  alt={item.name_en}
-                  className="w-24 h-32 object-cover rounded-md bg-gray-100 dark:bg-zinc-800"
-                />
+                <Link href={`/product/${item.id}`}>
+                  <img
+                    src={item.image || "/products/shoe.jpg"}
+                    alt={item.name_en}
+                    className="w-24 h-32 object-cover rounded-md bg-gray-100 dark:bg-zinc-800"
+                  />
+                </Link>
 
                 <div className="flex-1 flex flex-col justify-between">
                   <div className="flex justify-between">

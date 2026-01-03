@@ -76,7 +76,7 @@ const SearchComponent = () => {
         {t("search")}
       </button>
       {results.length > 0 && (
-        <div className="w-full p-5 bg-black absolute top-full text-white flex flex-col gap-5">
+        <div className="w-full p-5 bg-black absolute top-full text-white flex flex-col gap-5 z-20">
           {results.slice(0, 10).map((result) => (
             <Link
               href={`/product/${result.id}`}
