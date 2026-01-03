@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/[locale]/components/layout/Header/Header";
-import ReduxProvider from "@/app/[locale]/components/reduxProvider";
+import ReduxProvider from "@/app/[locale]/components/Providers/reduxProvider";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import { ThemeProvider } from "./components/ThemeProvider";
+import { ThemeProvider } from "./components/Providers/ThemeProvider";
 import Footer from "./components/layout/Footer/Footer";
 import { Toaster } from "sonner";
 
