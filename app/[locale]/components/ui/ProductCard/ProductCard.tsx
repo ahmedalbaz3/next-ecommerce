@@ -20,9 +20,9 @@ const ProductCard2 = ({
 }: productCardProps) => {
   const t = useTranslations("productCard");
   return (
-    <div className="product-card  ">
+    <Link href={`/product/${id}`} className="product-card  ">
       <div className="product-card-top overflow-hidden mb-5 relative aspect-square rounded-lg bg-gray-100 dark:bg-zinc-900">
-        <Link href={`/product/${id}`}>
+        <>
           <Image
             fill
             src={image}
@@ -31,7 +31,7 @@ const ProductCard2 = ({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             loading="lazy"
           />
-        </Link>
+        </>
 
         {!inStock && (
           <span className="state absolute top-2 left-2 px-3 py-1 bg-red-600 text-white text-sm font-bold rounded-sm shadow-md  rtl:left-auto rtl:right-2">
@@ -41,7 +41,7 @@ const ProductCard2 = ({
       </div>
       <div className="product-card-bottom flex flex-col gap-3">
         <div className="title dark:text-white text-2xl">
-          <Link href={`/product/${id}`}>{isRtl ? name_ar : name_en}</Link>
+          <div>{isRtl ? name_ar : name_en}</div>
         </div>
         <div className="price text-violet-900 dark:text-violet-400 text-xl font-semibold flex gap-3">
           <span>${price.toFixed(2)}</span>
@@ -59,7 +59,7 @@ const ProductCard2 = ({
           dir={isRtl ? "rtl" : "ltr"}
         />
       </div>
-    </div>
+    </Link>
   );
 };
 
