@@ -51,6 +51,11 @@ const SearchComponent = () => {
       className="w-2/5 items-center  border border-gray-400 hidden md:flex relative"
       onSubmit={(e) => {
         e.preventDefault();
+        if (!query.trim()) {
+          console.log("write something");
+
+          return;
+        }
         router.push(`/search/${query.trim()}`);
       }}
     >

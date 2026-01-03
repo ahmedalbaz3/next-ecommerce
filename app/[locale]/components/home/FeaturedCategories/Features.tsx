@@ -1,31 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import CategoryCard from "../../ui/CategoryCard/CategoryCard";
-
-const quite = {
-  categories: [
-    {
-      id: "c1",
-      slug: "apparel",
-      name_en: "Apparel",
-      name_ar: "ملابس",
-      image: "/images/headphone.svg",
-    },
-  ],
-};
-
-async function getCategories(): Promise<{ categories: Tcategory[] }> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/categories/`,
-    {
-      cache: "no-store",
-    }
-  );
-
-  if (res.status === 404) return quite as { categories: Tcategory[] };
-  if (!res.ok) throw new Error("Failed to fetch");
-
-  return res.json();
-}
+import getCategories from "@/lib/getCategories";
 
 const Feature2 = async ({
   params,
