@@ -48,7 +48,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="right flex-1 relative hidden md:block w-full h-[500px] rounded-2xl overflow-hidden">
+        <div className="right flex-1 relative hidden lg:block w-full h-[500px] rounded-2xl overflow-hidden">
           {mounted && (
             <Image
               src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070&auto=format&fit=crop"
