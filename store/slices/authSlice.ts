@@ -6,17 +6,23 @@ interface AuthState {
   isAuthenticated: boolean;
 }
 
-const initialState: AuthState = {
-  user: null,
-  token: typeof window !== "undefined" ? localStorage.getItem("token") : null,
-  isAuthenticated: false,
+// Helper to safely get items from storage
+const getStorageItem = (key: string) => {
+  if (typeof window === "undefined") return null;
+  const item = localStorage.getItem(key);
+  if (!item || item === "undefined") return null;
+  return item;
 };
 
-export const loadAuthFromStorage = () => (dispatch: any) => {
-  if (typeof window !== "undefined") {
-    const currenttoken = localStorage.getItem("token") as string;
-    dispatch(setCredentials({ user: "", token: currenttoken }));
-  }
+const initialState: AuthState = {
+  // This runs immediately when the app loads, BEFORE the first render
+  token: typeof window !== "undefined" ? localStorage.getItem("token") : null,
+  user:
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("user") || "null")
+      : null,
+  isAuthenticated:
+    typeof window !== "undefined" ? !!localStorage.getItem("token") : false,
 };
 
 const authSlice = createSlice({
@@ -29,15 +35,18 @@ const authSlice = createSlice({
     ) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      if (action.payload.token === null) return;
       state.isAuthenticated = true;
+
       localStorage.setItem("token", action.payload.token);
+      // FIX: Save the WHOLE user object, not just action.payload.user.name
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
     },
     logout: (state) => {
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
     },
   },
 });

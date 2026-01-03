@@ -11,7 +11,6 @@ import Link from "next/link";
 import SearchComponent from "../Search/SearchComponent";
 import { usePathname } from "next/navigation";
 import { useAppDispatch } from "@/store/actions";
-import { loadAuthFromStorage } from "@/store/slices/authSlice";
 import { loadDirectionFromCookie } from "@/store/slices/directionSlice";
 
 const MobileMenu = () => {
@@ -22,7 +21,6 @@ const MobileMenu = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(loadAuthFromStorage());
     dispatch(loadDirectionFromCookie());
   }, [dispatch]);
 

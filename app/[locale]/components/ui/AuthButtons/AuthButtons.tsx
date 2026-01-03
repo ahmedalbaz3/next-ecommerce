@@ -4,12 +4,22 @@ import { useAppDispatch, useAppSelector } from "@/store/actions";
 import { logout } from "@/store/slices/authSlice";
 import { useTranslations } from "next-intl";
 import Link from "next/dist/client/link";
+import { useEffect, useState } from "react";
 
 const AuthButtons = () => {
   const t = useTranslations("header");
   const dispatch = useAppDispatch();
 
   const isAuth = useAppSelector((state) => state.authReducer.isAuthenticated);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="p-2 size-9" />;
+  }
 
   return (
     <>

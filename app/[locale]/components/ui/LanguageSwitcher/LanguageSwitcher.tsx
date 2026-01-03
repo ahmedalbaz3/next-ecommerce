@@ -4,8 +4,6 @@ import { toggleDirection } from "@/store/slices/directionSlice";
 import { Globe } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
-import React from "react";
-
 const LanguageSwitcher = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();

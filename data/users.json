@@ -41,6 +41,27 @@
       "email": "elbaz@mail.net",
       "role": "user",
       "password": "Password123"
+    },
+    {
+      "id": "u7",
+      "name": "Baianat",
+      "email": "baianat@test.io",
+      "role": "user",
+      "password": "Password123"
+    },
+    {
+      "id": "user-0.15691043180245456-1767445489596",
+      "name": "Baianat",
+      "email": "baianat@test.ioe",
+      "role": "user",
+      "password": "Password123"
+    },
+    {
+      "id": "user-0.787296719029605-1767447609319",
+      "name": "Braian Caren",
+      "email": "caren@mail.com",
+      "role": "user",
+      "password": "Password123"
     }
   ]
 }

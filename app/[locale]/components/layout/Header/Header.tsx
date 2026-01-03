@@ -15,7 +15,7 @@ const Header = async () => {
   return (
     <header className="bg-white dark:bg-black text-black dark:text-white flex flex-col relative z-10">
       <div className="header-top container mx-auto flex items-center justify-between max-md:px-5 py-5">
-        <div className=" flex gap-7">
+        <div className=" flex gap-7 items-center">
           <Link href="/" className="header-logo text-3xl font-semibold">
             May<span className="text-violet-900">Bell</span>
           </Link>

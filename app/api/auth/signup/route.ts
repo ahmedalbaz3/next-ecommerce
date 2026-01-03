@@ -20,19 +20,31 @@ export async function POST(request: Request) {
     const data = JSON.parse(fileData);
 
     const newUser = {
-      id: `u${data.users.length + 1}`,
+      id: `user-${Math.random()}-${Date.now()}`,
       name,
       email,
       role: "user",
       password,
     };
 
+    const existingUser = data.users.find((u: any) => u.email === email);
+    if (existingUser) {
+      return NextResponse.json(
+        { error: "User with this email already exists" },
+        { status: 409 }
+      );
+    }
+
     data.users.push(newUser);
 
     await fs.writeFile(filePath, JSON.stringify(data, null, 2));
 
     return NextResponse.json(
-      { message: "User created successfully!", user: { name, email } },
+      {
+        message: "User created successfully!",
+        user: { name, email },
+        token: `token-${newUser.id}-${Date.now()}`,
+      },
       { status: 201 }
     );
   } catch (error) {

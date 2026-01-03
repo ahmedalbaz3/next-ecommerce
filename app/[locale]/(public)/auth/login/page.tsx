@@ -18,9 +18,7 @@ export default function LoginPage() {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const isRtl = useAppSelector((state) => state.dirReducer.isRtl);
-  const isAuthenticated = useAppSelector(
-    (state) => state.authReducer.isAuthenticated
-  );
+  const { isAuthenticated } = useAppSelector((state) => state.authReducer);
 
   const logInSchema = z.object({
     mail: z

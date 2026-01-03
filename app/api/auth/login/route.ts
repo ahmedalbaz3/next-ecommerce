@@ -23,6 +23,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       message: "Login successful",
       user: userWithoutPassword,
+      token: `token-${user.id}-${Date.now()}`, // Simple token generation
     });
   } catch (error) {
     return NextResponse.json(
