@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
+import { promises as fs } from "fs";
+import path from "path";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { name, email, password } = body;
 
-    // 1. Basic Validation
     if (!name || !email || !password) {
       return NextResponse.json(
         { error: "All fields are required" },
@@ -13,17 +14,32 @@ export async function POST(request: Request) {
       );
     }
 
-    // 2. Simulate saving to database
-    console.log("New User Signed Up:", { name, email });
+    const filePath = path.join(process.cwd(), "data", "users.json");
+
+    const fileData = await fs.readFile(filePath, "utf8");
+    const data = JSON.parse(fileData);
+
+    const newUser = {
+      id: `u${data.users.length + 1}`,
+      name,
+      email,
+      role: "user",
+      password,
+    };
+
+    data.users.push(newUser);
+
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
 
     return NextResponse.json(
-      { message: "User created successfully!" },
+      { message: "User created successfully!", user: { name, email } },
       { status: 201 }
     );
   } catch (error) {
+    console.error("File error:", error);
     return NextResponse.json(
-      { error: "Invalid request body" },
-      { status: 400 }
+      { error: "Failed to save user data" },
+      { status: 500 }
     );
   }
 }

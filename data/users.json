@@ -34,6 +34,13 @@
       "name": "Omar Hassan",
       "role": "user",
       "password": "password123"
+    },
+    {
+      "id": "u6",
+      "name": "Ahmed Elbaz",
+      "email": "elbaz@mail.net",
+      "role": "user",
+      "password": "Password123"
     }
   ]
 }

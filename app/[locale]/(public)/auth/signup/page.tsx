@@ -79,6 +79,7 @@ export default function SignupPage() {
       console.log("Signup successful:", result.message);
     } catch (error: any) {
       alert(error.message);
+      console.log("Signup error:", error);
     }
   };
 
