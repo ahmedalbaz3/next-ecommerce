@@ -39,9 +39,11 @@ const AddToCart = ({
         e.preventDefault();
         handelAddToCart({ id, price, inStock });
       }}
-      className={`cursor-pointer text-base md:text-lg font-medium px-4 py-2  border transition-all duration-300 whitespace-nowrap
-        bg-violet-900  text-white hover:bg-amber-500 hover:text-white 
-        dark:bg-zinc-900 dark:border-zinc-700 dark:text-white text-center
+      className={` text-sm py-1.5 px-2.5 bg-amber-500 rounded-2xl w-fit mt-3  duration-300 text-white shadow-md ${
+        inStock
+          ? "hover:bg-amber-600 cursor-pointer "
+          : "opacity-50 cursor-not-allowed"
+      }
         ${style}`}
       dir={dir}
     >

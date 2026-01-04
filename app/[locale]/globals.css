@@ -47,9 +47,9 @@ body {
 }
 
 /* Fix for smooth theme switching */
-* {
+/* * {
   transition: background-color 0.3s ease, border-color 0.3s ease;
-}
+} */
 
 /* Custom Variant for Dark Mode (v4 logic) */
 @custom-variant dark (&:where(.dark, .dark *));

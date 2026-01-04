@@ -113,7 +113,7 @@ export default async function ProductPage({
                   inStock={inStock}
                   id={id}
                   price={price}
-                  style="w-full bg-black text-black dark:bg-white dark:text-black py-5 rounded-2xl font-bold transition-all active:scale-95"
+                  style="w-full bg-black text-black dark:bg-white dark:text-black py-5 rounded-2xl font-bold transition-all active:scale-95 text-center"
                   dir={isRtl ? "rtl" : "ltr"}
                 />
               </div>
