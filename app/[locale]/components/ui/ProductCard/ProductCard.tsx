@@ -58,11 +58,12 @@ const ProductCard = ({
             price={price}
             dir={isRtl ? "rtl" : "ltr"}
           />
-          {/* <div className="add-to-cart text-sm py-1.5 px-2.5 bg-amber-500 rounded-2xl w-fit mt-3">
-            add to cart
-          </div> */}
         </div>
-        <div className="price flex-1  dark:text-white text-xl font-semibold flex flex-col items-center justify-center border-l pl-3 ">
+        <div
+          className={`price flex-1 dark:text-white text-xl  font-semibold flex flex-col items-center justify-center ${
+            isRtl ? "border-r pr-3" : "border-l pl-3"
+          }`}
+        >
           <span>${price.toFixed(2)}</span>
           {oldPrice && (
             <span className="line-through text-gray-400 text-xs text-center">
@@ -70,13 +71,6 @@ const ProductCard = ({
             </span>
           )}
         </div>
-
-        {/* <AddToCart
-          inStock={inStock}
-          id={id}
-          price={price}
-          dir={isRtl ? "rtl" : "ltr"}
-        /> */}
       </div>
     </Link>
   );
