@@ -114,3 +114,36 @@ body {
 .list-head {
   @apply text-gray-400 text-2xl;
 }
+
+/* for later */
+/* .hero-paragraph::after,
+.hero-actions::after {
+  content: "";
+  background: none;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 0px;
+  right: -25px;
+  box-shadow: -10px -10px #fff;
+  border-radius: 20px;
+} */
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-20%);
+  }
+}
+
+.about-panner::before {
+  content: "";
+
+  @apply absolute top-0 left-0 w-full h-full bg-black/70;
+}

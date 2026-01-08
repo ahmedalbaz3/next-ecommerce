@@ -51,12 +51,12 @@ const Hero = () => {
         <div className="right flex-1 relative hidden lg:block w-full h-[500px] rounded-2xl overflow-hidden">
           {mounted && (
             <Image
-              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070&auto=format&fit=crop"
+              src="/images/hero.avif"
               alt="Hero featured product"
               fill
               priority
               className="object-cover drop-shadow-2xl"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 640px"
               fetchPriority="high"
             />
           )}

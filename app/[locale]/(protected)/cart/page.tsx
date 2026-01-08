@@ -7,9 +7,11 @@ import {
   deleteItem,
   loadCartProducts,
 } from "@/store/slices/cartSlice";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { TProduct } from "@/types/TProduct";
+import { set } from "zod";
 
 export default function CartPage() {
   const tCart = useTranslations("cart");
@@ -24,9 +26,12 @@ export default function CartPage() {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
     if (Object.keys(items).length > 0) {
       dispatch(loadCartProducts(items));
+      setMounted(true);
     }
 
     if (!isAuth) {
@@ -34,6 +39,12 @@ export default function CartPage() {
     }
   }, [isAuth, router, dispatch, items]);
 
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return <div></div>;
+  }
+
+  // ============== Empty cart state ==============
   if (!Object.keys(items).length) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-4 bg-white dark:bg-zinc-950 transition-colors duration-500">
@@ -59,10 +70,11 @@ export default function CartPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-6">
-            {fullProductInfo.map((item) => (
+            {fullProductInfo.map((item, index) => (
               <div
+                draggable="true"
                 key={item.id}
-                className="flex gap-4 border-b border-gray-200 dark:border-zinc-800 pb-6 last:border-0"
+                className="draggable-product flex gap-4 border-b border-gray-200 dark:border-zinc-800 pb-6 last:border-0"
               >
                 <Link href={`/product/${item.id}`}>
                   <img

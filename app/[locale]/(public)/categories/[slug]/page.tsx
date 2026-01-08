@@ -54,6 +54,7 @@ export default async function CategoryPage({
               isRtl={isRtl}
               description_ar={product.description_ar}
               description_en={product.description_en}
+              oldPrice={product.oldPrice}
             />
           ))}
         </div>

@@ -1,10 +1,11 @@
 "use client";
 
-import { useAppSelector } from "@/store/actions";
+import { useAppDispatch, useAppSelector } from "@/store/actions";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { loadCartProducts } from "@/store/slices/cartSlice";
 
 export default function CheckoutPage() {
   const t = useTranslations("Checkout");
@@ -18,13 +19,23 @@ export default function CheckoutPage() {
   );
   const isRtl = useAppSelector((state) => state.dirReducer.isRtl);
 
+  const [mounted, setMounted] = useState(false);
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
     if (!isAuthenticated) {
       router.push("/");
     }
-  }, [isAuthenticated, router]);
+    dispatch(loadCartProducts(items));
+
+    setMounted(true);
+  }, [isAuthenticated, router, dispatch]);
 
   const shippingCost = 10;
+
+  if (!mounted) {
+    return <div></div>;
+  }
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-500">
