@@ -30,7 +30,7 @@ const Header = async () => {
         </div>
         <MobileMenu />
       </div>
-      <div className="header-bottom bg-violet-900 ">
+      <div className="header-bottom bg-black dark:bg-zinc-900 ">
         <div className="header-bottom-container container mx-auto items-center justify-between max-md:px-5  hidden md:flex text-white ">
           <div className="header-bottom-left flex  gap-5">
             <Link
