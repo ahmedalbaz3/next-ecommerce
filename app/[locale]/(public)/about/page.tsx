@@ -15,7 +15,7 @@ export default async function AboutPage() {
           height={500}
         />
         <section className="text-center space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <h1 className="text-2xl md:text-7xl font-black tracking-tighter text-white dark:text-black">
+          <h1 className="text-2xl md:text-7xl font-black tracking-tighter text-white ">
             {t("title")}
           </h1>
           <p className="text-white dark:text-zinc-400 max-w-2xl mx-auto text-xs md:text-[16px] leading-relaxed">
@@ -42,7 +42,7 @@ export default async function AboutPage() {
             alt="mission"
           />
 
-          <div className="text">
+          <div className="text dark:text-white">
             <h2 className="text-xl md:text-3xl mb-5">{t("mission.title")}</h2>
             <p className="text-sm">{t("mission.description")}</p>
           </div>
