@@ -49,17 +49,18 @@ const Hero = () => {
         </div>
 
         <div className="right flex-1 relative hidden lg:block w-full h-[500px] rounded-2xl overflow-hidden">
-          {mounted && (
-            <Image
-              src="/images/hero.avif"
-              alt="Hero featured product"
-              fill
-              priority
-              className="object-cover drop-shadow-2xl"
-              sizes="(max-width: 768px) 100vw, 640px"
-              fetchPriority="high"
-            />
-          )}
+          <Image
+            src="/images/hero.avif"
+            alt="Hero featured product"
+            fill
+            priority
+            className="object-cover drop-shadow-2xl"
+            sizes="(max-width: 768px) 100vw, 640px"
+            fetchPriority="high"
+            loading="eager"
+            placeholder="blur"
+            blurDataURL="/images/hero-blur.jpg"
+          />
         </div>
       </div>
     </section>
